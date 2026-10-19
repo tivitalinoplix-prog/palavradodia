@@ -64,39 +64,23 @@
             background-size: 24px 24px;
         }
 
-        /* --- 3D BOOK INTERACTIVE ENGINE --- */
-        .stage-3d {
-            perspective: 1400px;
+        /* Hotspot Ripple Animation (Apple Style) */
+        .hotspot-pulse {
+            box-shadow: 0 0 0 0 rgba(184, 147, 85, 0.7);
+            animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
         }
-        .book-3d {
-            width: 320px;
-            height: 440px;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        /* Estilo da Lombada e Espessura (365 Páginas) */
-        .spine-shadow {
-            background: linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.18) 100%);
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(184, 147, 85, 0.7); }
+            70% { box-shadow: 0 0 0 14px rgba(184, 147, 85, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(184, 147, 85, 0); }
         }
 
-        /* Brilho da Margem Publicitária */
-        .ad-spotlight {
-            border: 2px dashed #B89355;
-            background: rgba(184, 147, 85, 0.08);
-            box-shadow: 0 0 25px rgba(184, 147, 85, 0.25), inset 0 0 15px rgba(184, 147, 85, 0.1);
-            animation: ad-pulse 2.5s infinite alternate ease-in-out;
-        }
-        @keyframes ad-pulse {
-            0% { border-color: rgba(184, 147, 85, 0.5); box-shadow: 0 0 15px rgba(184, 147, 85, 0.15); }
-            100% { border-color: rgba(184, 147, 85, 1); box-shadow: 0 0 35px rgba(184, 147, 85, 0.45); }
-        }
-
-        /* Folha do Livro (Textura de Papel Pólen) */
-        .paper-sheet {
-            background: #FDFBF7;
-            background-image: linear-gradient(90deg, rgba(230,220,200,0.3) 0%, transparent 6%, transparent 94%, rgba(230,220,200,0.3) 100%);
+        /* Glassmorphism Badge */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
         .gold-border {
@@ -136,7 +120,7 @@
 
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-navy-800">
                 <a href="#proposito" class="hover:text-bronze-600 transition-colors">Por que o Livro?</a>
-                <a href="#gabarito" class="hover:text-bronze-600 transition-colors">Simulador 3D das Páginas</a>
+                <a href="#gabarito" class="hover:text-bronze-600 transition-colors">Visualizador das Páginas</a>
                 <a href="#cotas" class="hover:text-bronze-600 transition-colors">Investimento</a>
                 <a href="#autor" class="hover:text-bronze-600 transition-colors">O Autor</a>
                 <a href="#consultores" class="hover:text-bronze-600 transition-colors">Contato</a>
@@ -188,7 +172,7 @@
                     <!-- CTAS -->
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                         <a href="#gabarito" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-navy-900 text-sand-50 font-semibold text-sm hover:bg-navy-800 shadow-md hover:shadow-xl transition-all text-center flex items-center justify-center gap-2">
-                            <span>Ver Simulador 3D das Páginas</span>
+                            <span>Ver Amostra das Páginas</span>
                             <svg class="w-4 h-4 text-bronze-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </a>
                         <a href="#cotas" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white border border-sand-400/80 text-navy-900 font-semibold text-sm hover:bg-sand-200 transition-all text-center">
@@ -270,122 +254,86 @@
     </section>
 
     <!-- ============================================================== -->
-    <!-- ENGENHARIA GRÁFICA & DIAGRAMAÇÃO: SIMULADOR 3D INTERATIVO       -->
+    <!-- VISUALIZADOR FOTOGRÁFICO EDITORIAL (ESTÚDIO REAL DE LUXO)      -->
     <!-- ============================================================== -->
     <section id="gabarito" class="py-20 px-4 bg-sand-200/50 relative overflow-hidden">
         <div class="max-w-6xl mx-auto">
             
             <div class="max-w-2xl mx-auto text-center mb-10">
                 <span class="text-xs uppercase tracking-widest text-bronze-600 font-bold block mb-2">Engenharia Gráfica & Diagramação</span>
-                <h2 class="font-serif text-3xl sm:text-4xl text-navy-950 font-bold mb-4">Simulador 3D: Localize seu Espaço</h2>
+                <h2 class="font-serif text-3xl sm:text-4xl text-navy-950 font-bold mb-4">Onde sua marca ficará no livro?</h2>
                 <p class="text-navy-800/70 font-light leading-relaxed">
-                    Clique nas posições abaixo para ver o livro se mover em 3D e destacar exatamente onde ficará a página da sua marca no formato <strong>10,5 x 15,5 cm</strong>.
+                    Navegue pelas fotografias reais do devocional e veja exatamente onde o anúncio de <strong>10,5 x 15,5 cm</strong> da sua empresa será impresso:
                 </p>
             </div>
 
             <!-- CONTROLE DE NAVEGAÇÃO ENTRE OS ESPAÇOS -->
             <div class="flex flex-wrap justify-center gap-2 mb-10 max-w-4xl mx-auto">
-                <button onclick="setBookState('contracapa')" id="tab-contracapa" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-navy-900 text-sand-100 shadow-md flex items-center gap-2">
+                <button onclick="selectPhotoView('contracapa')" id="tab-contracapa" class="photo-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-navy-900 text-sand-100 shadow-md flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-bronze-500"></span>
                     1. Contracapa Master (Capa 4)
                 </button>
-                <button onclick="setBookState('honra')" id="tab-honra" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
+                <button onclick="selectPhotoView('honra')" id="tab-honra" class="photo-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-slate-300"></span>
                     2. Página de Honra (1ª Página)
                 </button>
-                <button onclick="setBookState('capa2')" id="tab-capa2" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
+                <button onclick="selectPhotoView('capa2')" id="tab-capa2" class="photo-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-slate-300"></span>
                     3. 2ª Capa Interna (Verso Frente)
                 </button>
-                <button onclick="setBookState('capa3')" id="tab-capa3" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
+                <button onclick="selectPhotoView('capa3')" id="tab-capa3" class="photo-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-slate-300"></span>
                     4. 3ª Capa Interna (Verso Trás)
                 </button>
-                <button onclick="setBookState('meses')" id="tab-meses" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
+                <button onclick="selectPhotoView('meses')" id="tab-meses" class="photo-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
                     <span class="w-2 h-2 rounded-full bg-slate-300"></span>
                     5. Aberturas de Mês (12 Cotas)
                 </button>
             </div>
 
-            <!-- CONTAINER PRINCIPAL DO SIMULADOR -->
+            <!-- CONTAINER DO VISUALIZADOR FOTOGRÁFICO -->
             <div class="bg-white rounded-3xl p-6 sm:p-10 border border-sand-300 shadow-2xl max-w-5xl mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     
-                    <!-- PALCO 3D INTERATIVO DO LIVRO -->
-                    <div class="lg:col-span-6 flex flex-col items-center justify-center py-6">
-                        <div class="stage-3d w-full flex items-center justify-center relative min-h-[440px]">
+                    <!-- FOTO REAL DO LIVRO COM HOTSPOTS DE DESIGN -->
+                    <div class="lg:col-span-6 flex flex-col items-center justify-center">
+                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-sand-300/80 bg-sand-100 group">
                             
-                            <!-- EFEITO DE SOMBRA DE SUPERFÍCIE DA MESA -->
-                            <div class="absolute bottom-4 w-72 h-8 bg-navy-950/20 rounded-[100%] blur-xl transform scale-y-50"></div>
+                            <!-- IMAGEM FOTOGRÁFICA PRINCIPAL -->
+                            <img 
+                                id="stage-image" 
+                                src="livro-contracapa.jpg" 
+                                alt="Fotografia do Livro Palavra do Dia"
+                                class="w-full h-full object-cover transition-all duration-700 transform group-hover:scale-[1.02]"
+                            />
 
-                            <!-- O OBJETO LIVRO 3D -->
-                            <div id="interactive-book" class="book-3d flex items-center justify-center">
+                            <!-- OVERLAY GRADIENTE DE REFINAMENTO -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent pointer-events-none"></div>
 
-                                <!-- VISÃO 1: CONTRACAPA MASTER (LIVRO FECHADO DE COSTAS) -->
-                                <div id="view-contracapa" class="book-view w-72 h-[415px] rounded-r-lg rounded-l-sm bg-sand-200 border-r-4 border-navy-900 shadow-2xl p-5 flex flex-col justify-between relative overflow-hidden transition-all duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-sand-300/40 via-transparent to-white/40 pointer-events-none"></div>
-                                    
-                                    <!-- ÁREA EM DESTAQUE (AD HIGHLIGHT) -->
-                                    <div class="ad-spotlight rounded-xl p-4 h-full flex flex-col justify-between items-center text-center relative z-10">
-                                        <div class="w-full flex items-center justify-between border-b border-bronze-500/30 pb-2">
-                                            <span class="text-[10px] font-mono uppercase tracking-widest font-bold text-navy-900 bg-bronze-500/20 px-2 py-0.5 rounded">
-                                                Capa 4 Externa
-                                            </span>
-                                            <span class="text-[10px] font-mono text-bronze-700 font-bold">10,5 x 15,5 cm</span>
-                                        </div>
-
-                                        <div class="my-auto">
-                                            <div class="w-14 h-14 mx-auto rounded-full bg-bronze-500/20 border border-bronze-500/40 flex items-center justify-center mb-3">
-                                                <svg class="w-7 h-7 text-bronze-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-                                            </div>
-                                            <h4 class="font-serif font-bold text-navy-950 text-base leading-tight">
-                                                Sua Marca em Destaque Absoluto
-                                            </h4>
-                                            <p class="text-[11px] text-navy-800/80 mt-1 font-light max-w-[200px] mx-auto">
-                                                Visível imediatamente em qualquer mesa ou cabeceira sem abrir o livro.
-                                            </p>
-                                        </div>
-
-                                        <div class="w-full pt-2 border-t border-bronze-500/30 text-[9px] font-mono text-navy-700/60 flex justify-between">
-                                            <span>365 Dias Exposta</span>
-                                            <span>Posição #1</span>
-                                        </div>
-                                    </div>
+                            <!-- HOTSPOT INTERATIVO ESTILO APPLE -->
+                            <div id="hotspot-badge" class="absolute bottom-4 left-4 right-4 glass-card p-3 rounded-xl shadow-lg border border-white/60 transition-all duration-500">
+                                <div class="flex items-center gap-2.5 mb-1">
+                                    <span class="w-3 h-3 rounded-full bg-bronze-500 hotspot-pulse inline-block"></span>
+                                    <span id="hotspot-tag" class="text-[11px] font-mono font-bold uppercase tracking-wider text-navy-950">
+                                        Capa 4 Externa (Trás)
+                                    </span>
                                 </div>
-
-                                <!-- VISÃO 2: LIVRO ABERTO (SPREAD EM 2 PÁGINAS) -->
-                                <div id="view-spread" class="book-view hidden w-[340px] sm:w-[420px] h-[310px] sm:h-[325px] rounded-lg shadow-2xl flex relative overflow-hidden transition-all duration-700">
-                                    
-                                    <!-- PÁGINA ESQUERDA -->
-                                    <div id="page-left" class="w-1/2 h-full paper-sheet p-3.5 sm:p-4 border-r border-navy-900/10 flex flex-col justify-between relative">
-                                        <div class="absolute right-0 top-0 bottom-0 w-4 spine-shadow pointer-events-none"></div>
-                                        <div id="content-left">
-                                            <!-- Conteúdo dinâmico preenchido via JS -->
-                                        </div>
-                                    </div>
-
-                                    <!-- PÁGINA DIREITA -->
-                                    <div id="page-right" class="w-1/2 h-full paper-sheet p-3.5 sm:p-4 border-l border-navy-900/10 flex flex-col justify-between relative">
-                                        <div class="absolute left-0 top-0 bottom-0 w-4 spine-shadow pointer-events-none"></div>
-                                        <div id="content-right">
-                                            <!-- Conteúdo dinâmico preenchido via JS -->
-                                        </div>
-                                    </div>
-
-                                </div>
-
+                                <p id="hotspot-sub" class="text-xs text-navy-800 font-light leading-snug">
+                                    Posição Master: Visível 100% do tempo em mesas de cabeceira e reunião sem abrir o livro.
+                                </p>
                             </div>
+
                         </div>
 
-                        <!-- LEGENDA DA COTAÇÃO TÉCNICA -->
+                        <!-- COTAÇÃO TÉCNICA MINIMALISTA -->
                         <div class="mt-4 flex items-center justify-center gap-6 text-xs text-navy-700/70 font-mono">
                             <span class="flex items-center gap-1.5">
-                                <span class="w-3 h-3 rounded-full border border-bronze-500 bg-bronze-500/20 inline-block"></span>
-                                Área de Impressão: <strong>10,5 x 15,5 cm</strong>
+                                <span class="w-2.5 h-2.5 rounded-full bg-bronze-500 inline-block"></span>
+                                Dimensão: <strong>10,5 x 15,5 cm</strong>
                             </span>
                             <span class="flex items-center gap-1.5">
-                                <span class="w-3 h-3 rounded border border-navy-900/20 bg-sand-200 inline-block"></span>
-                                Margem de Respiro: <strong>10 mm</strong>
+                                <span class="w-2.5 h-2.5 rounded bg-sand-400 inline-block"></span>
+                                Sangria Técnica: <strong>3 mm</strong>
                             </span>
                         </div>
                     </div>
@@ -416,18 +364,18 @@
                         <div id="month-picker" class="hidden mb-6 bg-sand-100 p-4 rounded-xl border border-sand-300">
                             <span class="text-xs font-semibold text-navy-950 block mb-2">Selecione o mês para visualizar a folha de abertura:</span>
                             <div class="grid grid-cols-4 sm:grid-cols-6 gap-1.5 text-center text-xs font-medium">
-                                <button onclick="previewMonth('Janeiro')" class="month-btn py-1.5 px-1 rounded bg-navy-900 text-white font-bold">Jan</button>
-                                <button onclick="previewMonth('Fevereiro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Fev</button>
-                                <button onclick="previewMonth('Março')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Mar</button>
-                                <button onclick="previewMonth('Abril')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Abr</button>
-                                <button onclick="previewMonth('Maio')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Mai</button>
-                                <button onclick="previewMonth('Junho')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Jun</button>
-                                <button onclick="previewMonth('Julho')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Jul</button>
-                                <button onclick="previewMonth('Agosto')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Ago</button>
-                                <button onclick="previewMonth('Setembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Set</button>
-                                <button onclick="previewMonth('Outubro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Out</button>
-                                <button onclick="previewMonth('Novembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Nov</button>
-                                <button onclick="previewMonth('Dezembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Dez</button>
+                                <button onclick="selectMonth('Janeiro')" class="month-btn py-1.5 px-1 rounded bg-navy-900 text-white font-bold">Jan</button>
+                                <button onclick="selectMonth('Fevereiro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Fev</button>
+                                <button onclick="selectMonth('Março')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Mar</button>
+                                <button onclick="selectMonth('Abril')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Abr</button>
+                                <button onclick="selectMonth('Maio')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Mai</button>
+                                <button onclick="selectMonth('Junho')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Jun</button>
+                                <button onclick="selectMonth('Julho')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Jul</button>
+                                <button onclick="selectMonth('Agosto')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Ago</button>
+                                <button onclick="selectMonth('Setembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Set</button>
+                                <button onclick="selectMonth('Outubro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Out</button>
+                                <button onclick="selectMonth('Novembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Nov</button>
+                                <button onclick="selectMonth('Dezembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Dez</button>
                             </div>
                         </div>
 
@@ -740,13 +688,15 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT: MOTOR 3D INTERATIVO E GABARITO TÉCNICO -->
+    <!-- JAVASCRIPT: MOTOR FOTOGRÁFICO EDITORIAL -->
     <script>
-        let currentMonthName = "Janeiro";
+        let currentMonthSelected = "Janeiro";
 
-        const slotConfigurations = {
+        const photoViews = {
             contracapa: {
-                view: "contracapa",
+                image: "livro-contracapa.jpg",
+                tag: "Capa 4 Externa (Trás)",
+                sub: "Posição Master: Visível 100% do tempo em mesas de cabeceira e reunião sem abrir o livro.",
                 badge: "1 Vaga Exclusiva",
                 name: "Contracapa Master (Capa 4 Externa)",
                 price: "R$ 10.000",
@@ -757,9 +707,9 @@
                 showMonths: false
             },
             honra: {
-                view: "spread",
-                leftType: "presentation",
-                rightType: "ad-honra",
+                image: "livro-aberto.jpg",
+                tag: "1ª Página Interna (Página de Honra)",
+                sub: "Página nobre de abertura: O leitor visualiza imediatamente ao folhear o livro pela primeira vez.",
                 badge: "1 Vaga Exclusiva",
                 name: "Página de Honra (Abertura Inicial)",
                 price: "R$ 8.000",
@@ -770,22 +720,22 @@
                 showMonths: false
             },
             capa2: {
-                view: "spread",
-                leftType: "ad-capa2",
-                rightType: "first-leaf",
+                image: "livro-mockup-novo.png",
+                tag: "Verso da Capa Frontal (2ª Capa)",
+                sub: "Face interna da capa de abertura: Salta aos olhos assim que o devocional é aberto.",
                 badge: "1 Vaga Exclusiva",
                 name: "Segunda Capa Interna (Verso Frente)",
                 price: "R$ 5.000",
-                explanation: "A face interna da capa de abertura. Uma página nobre que salta aos olhos sempre que o leitor abre o livro para iniciar suas manhãs de reflexão.",
+                explanation: "A face interna da capa de abertura. Uma página nobre clássica que salta aos olhos sempre que o leitor abre o livro para iniciar suas manhãs de reflexão.",
                 status: "Disponível para Reserva",
                 ctaText: "Solicitar Reserva da 2ª Capa",
                 whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Segunda%20Capa%20Interna%20(R$%205.000)%20no%20Palavra%20do%20Dia.",
                 showMonths: false
             },
             capa3: {
-                view: "spread",
-                leftType: "last-devotion",
-                rightType: "ad-capa3",
+                image: "livro-mockup-novo.png",
+                tag: "Verso da Contracapa (3ª Capa)",
+                sub: "Face interna traseira: A página de encerramento vista em todo fechamento da leitura diária.",
                 badge: "1 Vaga Exclusiva",
                 name: "Terceira Capa Interna (Verso Trás)",
                 price: "R$ 5.000",
@@ -796,9 +746,9 @@
                 showMonths: false
             },
             meses: {
-                view: "spread",
-                leftType: "month-close",
-                rightType: "ad-mes",
+                image: "livro-aberto.jpg",
+                tag: "Abertura Oficial de Mês (10,5 x 15,5 cm)",
+                sub: "Página inteira na virada de cada mês: 1 patrocinador exclusivo por mês.",
                 badge: "12 Vagas (1 por Mês)",
                 name: "Abertura Mensal (Janeiro a Dezembro)",
                 price: "R$ 1.000",
@@ -810,12 +760,12 @@
             }
         };
 
-        function setBookState(stateKey) {
-            const config = slotConfigurations[stateKey];
-            if (!config) return;
+        function selectPhotoView(viewKey) {
+            const data = photoViews[viewKey];
+            if (!data) return;
 
-            // 1. Atualiza classes das abas de navegação
-            document.querySelectorAll('.slot-tab').forEach(btn => {
+            // 1. Atualiza botões
+            document.querySelectorAll('.photo-tab').forEach(btn => {
                 btn.classList.remove('bg-navy-900', 'text-sand-100', 'shadow-md');
                 btn.classList.add('bg-white', 'text-navy-900', 'border', 'border-sand-400');
                 const dot = btn.querySelector('span');
@@ -824,7 +774,7 @@
                     dot.classList.add('bg-slate-300');
                 }
             });
-            const activeTab = document.getElementById('tab-' + stateKey);
+            const activeTab = document.getElementById('tab-' + viewKey);
             if (activeTab) {
                 activeTab.classList.remove('bg-white', 'text-navy-900', 'border', 'border-sand-400');
                 activeTab.classList.add('bg-navy-900', 'text-sand-100', 'shadow-md');
@@ -835,172 +785,44 @@
                 }
             }
 
-            // 2. Animação e visual do Livro 3D
-            const book = document.getElementById('interactive-book');
-            const viewContracapa = document.getElementById('view-contracapa');
-            const viewSpread = document.getElementById('view-spread');
+            // 2. Transição suave da fotografia (Crossfade de estúdio)
+            const stageImg = document.getElementById('stage-image');
+            stageImg.style.opacity = '0.3';
+            stageImg.style.transform = 'scale(0.98)';
+            
+            setTimeout(() => {
+                stageImg.src = data.image;
+                stageImg.style.opacity = '1';
+                stageImg.style.transform = 'scale(1)';
+            }, 250);
 
-            if (config.view === "contracapa") {
-                // Livro fechado virado de costas
-                book.style.transform = "rotateY(0deg) rotateX(4deg) scale(1.02)";
-                viewContracapa.classList.remove('hidden');
-                viewSpread.classList.add('hidden');
-            } else {
-                // Livro aberto em 2 páginas
-                book.style.transform = "rotateY(-4deg) rotateX(6deg) scale(1)";
-                viewContracapa.classList.add('hidden');
-                viewSpread.classList.remove('hidden');
+            // 3. Atualiza o hotspot estilo Apple
+            document.getElementById('hotspot-tag').textContent = data.tag;
+            document.getElementById('hotspot-sub').textContent = data.sub;
 
-                renderSpreadPages(config.leftType, config.rightType);
-            }
-
-            // 3. Atualiza painel descritivo
-            document.getElementById('slot-badge').textContent = config.badge;
-            document.getElementById('slot-name').textContent = config.name;
-            document.getElementById('slot-price').textContent = config.price;
-            document.getElementById('slot-explanation').textContent = config.explanation;
-            document.getElementById('slot-status').textContent = config.status;
+            // 4. Atualiza painel lateral
+            document.getElementById('slot-badge').textContent = data.badge;
+            document.getElementById('slot-name').textContent = data.name;
+            document.getElementById('slot-price').textContent = data.price;
+            document.getElementById('slot-explanation').textContent = data.explanation;
+            document.getElementById('slot-status').textContent = data.status;
 
             const cta = document.getElementById('slot-cta');
-            cta.querySelector('span').textContent = config.ctaText;
-            cta.href = `https://wa.me/5522998586180?text=${config.whatsappMessage}`;
+            cta.querySelector('span').textContent = data.ctaText;
+            cta.href = `https://wa.me/5522998586180?text=${data.whatsappMessage}`;
 
-            // 4. Controle do seletor de meses
+            // 5. Controle do seletor de meses
             const monthPicker = document.getElementById('month-picker');
-            if (config.showMonths) {
+            if (data.showMonths) {
                 monthPicker.classList.remove('hidden');
+                updateMonthHotspot();
             } else {
                 monthPicker.classList.add('hidden');
             }
         }
 
-        function renderSpreadPages(leftType, rightType) {
-            const leftEl = document.getElementById('content-left');
-            const rightEl = document.getElementById('content-right');
-
-            // Renderiza lado esquerdo
-            if (leftType === "ad-capa2") {
-                leftEl.innerHTML = `
-                    <div class="ad-spotlight rounded-lg p-2.5 h-full flex flex-col justify-between text-center">
-                        <div class="border-b border-bronze-500/30 pb-1 text-[8px] font-mono text-bronze-700 font-bold uppercase">
-                            2ª Capa Interna
-                        </div>
-                        <div class="my-auto py-1">
-                            <span class="block font-serif font-bold text-navy-950 text-xs">Página da Sua Marca</span>
-                            <span class="text-[9px] text-navy-700/70 font-mono">10,5 x 15,5 cm</span>
-                        </div>
-                        <div class="text-[7.5px] font-mono text-navy-700/60 border-t border-bronze-500/30 pt-1">
-                            Verso da Capa Frontal
-                        </div>
-                    </div>
-                `;
-            } else if (leftType === "presentation") {
-                leftEl.innerHTML = `
-                    <div class="h-full flex flex-col justify-between text-navy-900/60 text-[9px] font-light">
-                        <div class="border-b border-navy-900/10 pb-1 text-[8px] font-mono uppercase">Folha de Rosto</div>
-                        <div class="my-auto text-center">
-                            <span class="font-serif font-bold text-navy-900 text-xs block">Palavra do Dia</span>
-                            <span class="text-[8px] block mt-1">Pr. Frederico Reis</span>
-                            <div class="w-8 h-0.5 bg-bronze-500/40 mx-auto my-2"></div>
-                            <span class="text-[7.5px] italic text-navy-700/70">Edição 2026/2027</span>
-                        </div>
-                        <div class="text-[7.5px] font-mono text-center">Igreja Batista Memorial</div>
-                    </div>
-                `;
-            } else if (leftType === "last-devotion") {
-                leftEl.innerHTML = `
-                    <div class="h-full flex flex-col justify-between text-[9px] font-light text-navy-900/70">
-                        <div class="text-[8px] font-mono border-b border-navy-900/10 pb-1">31/12 • Encerramento</div>
-                        <div class="my-auto">
-                            <span class="font-serif font-bold text-navy-950 text-[11px] block mb-1">Último Dia do Ano</span>
-                            <p class="text-[8px] leading-relaxed text-navy-800/80">
-                                "Você venceu mais um ano. O Senhor foi fiel em cada detalhe da sua caminhada..."
-                            </p>
-                        </div>
-                        <div class="text-[7px] text-right font-mono">Página 365</div>
-                    </div>
-                `;
-            } else {
-                leftEl.innerHTML = `
-                    <div class="h-full flex flex-col justify-between text-[9px] font-light text-navy-900/70">
-                        <div class="text-[8px] font-mono border-b border-navy-900/10 pb-1">Reflexão Diária</div>
-                        <div class="my-auto">
-                            <span class="font-serif font-bold text-navy-950 text-[11px] block mb-1">Pausa para a Alma</span>
-                            <p class="text-[8px] leading-relaxed text-navy-800/80">
-                                "A presença de Deus transforma o ritmo acelerado em paz e direção segura..."
-                            </p>
-                        </div>
-                        <div class="text-[7px] text-right font-mono">Devocional Diário</div>
-                    </div>
-                `;
-            }
-
-            // Renderiza lado direito
-            if (rightType === "ad-honra") {
-                rightEl.innerHTML = `
-                    <div class="ad-spotlight rounded-lg p-2.5 h-full flex flex-col justify-between text-center">
-                        <div class="border-b border-bronze-500/30 pb-1 text-[8px] font-mono text-bronze-700 font-bold uppercase">
-                            Página de Honra #1
-                        </div>
-                        <div class="my-auto py-1">
-                            <span class="block font-serif font-bold text-navy-950 text-xs">Abertura Institucional</span>
-                            <span class="text-[9px] text-navy-700/70 font-mono">10,5 x 15,5 cm</span>
-                            <span class="text-[7.5px] text-emerald-800 font-semibold block mt-1">1ª Página Que o Leitor Vê</span>
-                        </div>
-                        <div class="text-[7.5px] font-mono text-navy-700/60 border-t border-bronze-500/30 pt-1">
-                            Espaço Nobre Exclusivo
-                        </div>
-                    </div>
-                `;
-            } else if (rightType === "ad-capa3") {
-                rightEl.innerHTML = `
-                    <div class="ad-spotlight rounded-lg p-2.5 h-full flex flex-col justify-between text-center">
-                        <div class="border-b border-bronze-500/30 pb-1 text-[8px] font-mono text-bronze-700 font-bold uppercase">
-                            3ª Capa Interna
-                        </div>
-                        <div class="my-auto py-1">
-                            <span class="block font-serif font-bold text-navy-950 text-xs">Página de Fechamento</span>
-                            <span class="text-[9px] text-navy-700/70 font-mono">10,5 x 15,5 cm</span>
-                        </div>
-                        <div class="text-[7.5px] font-mono text-navy-700/60 border-t border-bronze-500/30 pt-1">
-                            Verso da Contracapa
-                        </div>
-                    </div>
-                `;
-            } else if (rightType === "ad-mes") {
-                rightEl.innerHTML = `
-                    <div class="ad-spotlight rounded-lg p-2.5 h-full flex flex-col justify-between text-center">
-                        <div class="border-b border-bronze-500/30 pb-1 text-[8px] font-mono text-bronze-700 font-bold uppercase">
-                            Patrocínio de ${currentMonthName}
-                        </div>
-                        <div class="my-auto py-1">
-                            <span class="block font-serif font-bold text-navy-950 text-xs">Abertura de ${currentMonthName}</span>
-                            <span class="text-[9px] text-navy-700/70 font-mono">10,5 x 15,5 cm</span>
-                            <span class="text-[7.5px] text-bronze-700 font-semibold block mt-1">1 Parceiro Oficial no Mês</span>
-                        </div>
-                        <div class="text-[7.5px] font-mono text-navy-700/60 border-t border-bronze-500/30 pt-1">
-                            Página de Transição Mensal
-                        </div>
-                    </div>
-                `;
-            } else {
-                rightEl.innerHTML = `
-                    <div class="h-full flex flex-col justify-between text-[9px] font-light text-navy-900/70">
-                        <div class="text-[8px] font-mono border-b border-navy-900/10 pb-1">01/01 • Quinta-Feira</div>
-                        <div class="my-auto">
-                            <span class="font-serif font-bold text-navy-950 text-[11px] block mb-1">Bom Dia, Ano Novo!</span>
-                            <p class="text-[8px] leading-relaxed text-navy-800/80">
-                                "Viramos a folha do calendário com o coração pronto para os recomeços de Deus..."
-                            </p>
-                        </div>
-                        <div class="text-[7px] text-right font-mono">Página 1</div>
-                    </div>
-                `;
-            }
-        }
-
-        function previewMonth(monthName) {
-            currentMonthName = monthName;
+        function selectMonth(monthName) {
+            currentMonthSelected = monthName;
             document.querySelectorAll('.month-btn').forEach(btn => {
                 btn.classList.remove('bg-navy-900', 'text-white', 'font-bold');
                 btn.classList.add('bg-white', 'text-navy-900', 'border', 'border-sand-300');
@@ -1008,11 +830,16 @@
             event.target.classList.remove('bg-white', 'text-navy-900', 'border', 'border-sand-300');
             event.target.classList.add('bg-navy-900', 'text-white', 'font-bold');
 
-            renderSpreadPages("month-close", "ad-mes");
+            updateMonthHotspot();
         }
 
-        // Inicializa no estado da Contracapa Master
-        setBookState('contracapa');
+        function updateMonthHotspot() {
+            document.getElementById('hotspot-tag').textContent = `Abertura Oficial de ${currentMonthSelected} (10,5 x 15,5 cm)`;
+            document.getElementById('hotspot-sub').textContent = `Folha inteira de abertura do mês de ${currentMonthSelected} • Patrocínio Exclusivo do Mês (R$ 1.000).`;
+        }
+
+        // Inicializa na Contracapa Master
+        selectPhotoView('contracapa');
     </script>
 </body>
 </html>
