@@ -63,6 +63,45 @@
             background-image: radial-gradient(#E8E2D5 0.75px, transparent 0.75px);
             background-size: 24px 24px;
         }
+
+        /* --- 3D BOOK INTERACTIVE ENGINE --- */
+        .stage-3d {
+            perspective: 1400px;
+        }
+        .book-3d {
+            width: 320px;
+            height: 440px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Estilo da Lombada e Espessura (365 Páginas) */
+        .spine-shadow {
+            background: linear-gradient(90deg, rgba(0,0,0,0.18) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.18) 100%);
+        }
+
+        /* Brilho da Margem Publicitária */
+        .ad-spotlight {
+            border: 2px dashed #B89355;
+            background: rgba(184, 147, 85, 0.08);
+            box-shadow: 0 0 25px rgba(184, 147, 85, 0.25), inset 0 0 15px rgba(184, 147, 85, 0.1);
+            animation: ad-pulse 2.5s infinite alternate ease-in-out;
+        }
+        @keyframes ad-pulse {
+            0% { border-color: rgba(184, 147, 85, 0.5); box-shadow: 0 0 15px rgba(184, 147, 85, 0.15); }
+            100% { border-color: rgba(184, 147, 85, 1); box-shadow: 0 0 35px rgba(184, 147, 85, 0.45); }
+        }
+
+        /* Folha do Livro (Textura de Papel Pólen) */
+        .paper-sheet {
+            background: #FDFBF7;
+            background-image: linear-gradient(90deg, rgba(230,220,200,0.3) 0%, transparent 6%, transparent 94%, rgba(230,220,200,0.3) 100%);
+        }
+
+        .gold-border {
+            border: 1px solid rgba(184, 147, 85, 0.35);
+        }
     </style>
 </head>
 <body class="selection:bg-bronze-500 selection:text-white">
@@ -97,8 +136,9 @@
 
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-navy-800">
                 <a href="#proposito" class="hover:text-bronze-600 transition-colors">Por que o Livro?</a>
-                <a href="#gabarito" class="hover:text-bronze-600 transition-colors">Gabarito das Páginas</a>
-                <a href="#cotas" class="hover:text-bronze-600 transition-colors">Tabela de Investimento</a>
+                <a href="#gabarito" class="hover:text-bronze-600 transition-colors">Simulador 3D das Páginas</a>
+                <a href="#cotas" class="hover:text-bronze-600 transition-colors">Investimento</a>
+                <a href="#autor" class="hover:text-bronze-600 transition-colors">O Autor</a>
                 <a href="#consultores" class="hover:text-bronze-600 transition-colors">Contato</a>
             </nav>
 
@@ -148,7 +188,7 @@
                     <!-- CTAS -->
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                         <a href="#gabarito" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-navy-900 text-sand-50 font-semibold text-sm hover:bg-navy-800 shadow-md hover:shadow-xl transition-all text-center flex items-center justify-center gap-2">
-                            <span>Ver Amostra das Páginas</span>
+                            <span>Ver Simulador 3D das Páginas</span>
                             <svg class="w-4 h-4 text-bronze-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </a>
                         <a href="#cotas" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white border border-sand-400/80 text-navy-900 font-semibold text-sm hover:bg-sand-200 transition-all text-center">
@@ -160,7 +200,6 @@
                 <!-- IMAGEM DO LIVRO (MOCKUP OFICIAL) -->
                 <div class="lg:col-span-5 flex justify-center">
                     <div class="relative w-full max-w-md">
-                        <!-- Efeito de respiro de fundo -->
                         <div class="absolute -inset-4 bg-gradient-to-tr from-bronze-500/10 via-sand-300/30 to-navy-900/10 rounded-3xl blur-2xl -z-10"></div>
                         
                         <div class="relative bg-white/40 p-3 sm:p-4 rounded-2xl border border-white/60 shadow-2xl backdrop-blur-sm group">
@@ -185,7 +224,7 @@
         </div>
     </section>
 
-    <!-- POR QUE O LIVRO FÍSICO SUPERA O DIGITAL (SEM JARGÕES) -->
+    <!-- POR QUE O LIVRO FÍSICO SUPERA O DIGITAL -->
     <section id="proposito" class="py-16 px-4 bg-white border-y border-sand-300/60">
         <div class="max-w-6xl mx-auto">
             <div class="max-w-2xl mx-auto text-center mb-14">
@@ -197,7 +236,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- CARD 1 -->
                 <div class="p-8 rounded-2xl bg-sand-100/70 border border-sand-300 hover:border-bronze-500/50 transition-all hover:shadow-lg">
                     <div class="w-12 h-12 rounded-xl bg-navy-900 text-sand-100 flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -208,7 +246,6 @@
                     </p>
                 </div>
 
-                <!-- CARD 2 -->
                 <div class="p-8 rounded-2xl bg-sand-100/70 border border-sand-300 hover:border-bronze-500/50 transition-all hover:shadow-lg">
                     <div class="w-12 h-12 rounded-xl bg-navy-900 text-sand-100 flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
@@ -219,7 +256,6 @@
                     </p>
                 </div>
 
-                <!-- CARD 3 -->
                 <div class="p-8 rounded-2xl bg-sand-100/70 border border-sand-300 hover:border-bronze-500/50 transition-all hover:shadow-lg">
                     <div class="w-12 h-12 rounded-xl bg-navy-900 text-sand-100 flex items-center justify-center mb-6">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
@@ -233,86 +269,129 @@
         </div>
     </section>
 
-    <!-- SEÇÃO TÉCNICA: GABARITO & AMOSTRA DAS PROPAGANDAS -->
-    <section id="gabarito" class="py-20 px-4 bg-sand-200/50">
+    <!-- ============================================================== -->
+    <!-- ENGENHARIA GRÁFICA & DIAGRAMAÇÃO: SIMULADOR 3D INTERATIVO       -->
+    <!-- ============================================================== -->
+    <section id="gabarito" class="py-20 px-4 bg-sand-200/50 relative overflow-hidden">
         <div class="max-w-6xl mx-auto">
             
-            <div class="max-w-2xl mx-auto text-center mb-12">
+            <div class="max-w-2xl mx-auto text-center mb-10">
                 <span class="text-xs uppercase tracking-widest text-bronze-600 font-bold block mb-2">Engenharia Gráfica & Diagramação</span>
-                <h2 class="font-serif text-3xl sm:text-4xl text-navy-950 font-bold mb-4">Onde sua marca ficará no livro?</h2>
+                <h2 class="font-serif text-3xl sm:text-4xl text-navy-950 font-bold mb-4">Simulador 3D: Localize seu Espaço</h2>
                 <p class="text-navy-800/70 font-light leading-relaxed">
-                    Todas as páginas foram dimensionadas no formato exato <strong>10,5 x 15,5 cm</strong>. Selecione abaixo a posição desejada para visualizar o gabarito técnico e o nível de exposição:
+                    Clique nas posições abaixo para ver o livro se mover em 3D e destacar exatamente onde ficará a página da sua marca no formato <strong>10,5 x 15,5 cm</strong>.
                 </p>
             </div>
 
-            <!-- CONTROLE DE ABAS INTERATIVAS -->
+            <!-- CONTROLE DE NAVEGAÇÃO ENTRE OS ESPAÇOS -->
             <div class="flex flex-wrap justify-center gap-2 mb-10 max-w-4xl mx-auto">
-                <button onclick="selectSlot('contracapa')" id="btn-contracapa" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-navy-900 text-sand-100 shadow-md">
+                <button onclick="setBookState('contracapa')" id="tab-contracapa" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-navy-900 text-sand-100 shadow-md flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-bronze-500"></span>
                     1. Contracapa Master (Capa 4)
                 </button>
-                <button onclick="selectSlot('honra')" id="btn-honra" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100">
+                <button onclick="setBookState('honra')" id="tab-honra" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-slate-300"></span>
                     2. Página de Honra (1ª Página)
                 </button>
-                <button onclick="selectSlot('capa2')" id="btn-capa2" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100">
-                    3. Segunda Capa (Verso Frente)
+                <button onclick="setBookState('capa2')" id="tab-capa2" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+                    3. 2ª Capa Interna (Verso Frente)
                 </button>
-                <button onclick="selectSlot('capa3')" id="btn-capa3" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100">
-                    4. Terceira Capa (Verso Trás)
+                <button onclick="setBookState('capa3')" id="tab-capa3" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+                    4. 3ª Capa Interna (Verso Trás)
                 </button>
-                <button onclick="selectSlot('meses')" id="btn-meses" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100">
+                <button onclick="setBookState('meses')" id="tab-meses" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-slate-300"></span>
                     5. Aberturas de Mês (12 Cotas)
                 </button>
             </div>
 
-            <!-- VISUALIZADOR TÉCNICO DO LIVRO -->
-            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-sand-300 shadow-xl max-w-4xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <!-- CONTAINER PRINCIPAL DO SIMULADOR -->
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-sand-300 shadow-2xl max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     
-                    <!-- PLANTA DA PÁGINA (SIMULADOR 10,5 X 15,5 CM) -->
-                    <div class="md:col-span-5 flex justify-center">
-                        <div class="relative w-56 aspect-[10.5/15.5] bg-sand-50 rounded-md border-2 border-navy-900/30 p-3 shadow-2xl flex flex-col justify-between">
+                    <!-- PALCO 3D INTERATIVO DO LIVRO -->
+                    <div class="lg:col-span-6 flex flex-col items-center justify-center py-6">
+                        <div class="stage-3d w-full flex items-center justify-center relative min-h-[440px]">
                             
-                            <!-- MARCAÇÃO DE COTAÇÃO TÉCNICA -->
-                            <div class="absolute -top-6 left-0 right-0 flex justify-between text-[11px] font-mono text-navy-700/60 font-semibold px-1">
-                                <span>|◄</span>
-                                <span>Largura: 10,5 cm</span>
-                                <span>►|</span>
-                            </div>
-                            <div class="absolute -right-8 top-0 bottom-0 flex flex-col justify-between text-[11px] font-mono text-navy-700/60 font-semibold py-1 [writing-mode:vertical-lr]">
-                                <span>|◄ Altura: 15,5 cm ►|</span>
-                            </div>
+                            <!-- EFEITO DE SOMBRA DE SUPERFÍCIE DA MESA -->
+                            <div class="absolute bottom-4 w-72 h-8 bg-navy-950/20 rounded-[100%] blur-xl transform scale-y-50"></div>
 
-                            <!-- ÁREA DE SANGRIA E SEGURANÇA -->
-                            <div id="blueprint-area" class="w-full h-full border-2 border-dashed border-bronze-500/80 bg-bronze-500/5 rounded p-3 flex flex-col justify-between items-center text-center transition-all">
-                                <div class="w-full border-b border-navy-900/10 pb-2">
-                                    <span id="blueprint-tag" class="text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded bg-navy-900 text-sand-100">
-                                        Capa 4 Externa
-                                    </span>
-                                </div>
+                            <!-- O OBJETO LIVRO 3D -->
+                            <div id="interactive-book" class="book-3d flex items-center justify-center">
 
-                                <div class="my-auto py-2">
-                                    <div class="w-12 h-12 mx-auto rounded-full bg-navy-900/10 border border-navy-900/20 flex items-center justify-center mb-2">
-                                        <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                <!-- VISÃO 1: CONTRACAPA MASTER (LIVRO FECHADO DE COSTAS) -->
+                                <div id="view-contracapa" class="book-view w-72 h-[415px] rounded-r-lg rounded-l-sm bg-sand-200 border-r-4 border-navy-900 shadow-2xl p-5 flex flex-col justify-between relative overflow-hidden transition-all duration-700">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-sand-300/40 via-transparent to-white/40 pointer-events-none"></div>
+                                    
+                                    <!-- ÁREA EM DESTAQUE (AD HIGHLIGHT) -->
+                                    <div class="ad-spotlight rounded-xl p-4 h-full flex flex-col justify-between items-center text-center relative z-10">
+                                        <div class="w-full flex items-center justify-between border-b border-bronze-500/30 pb-2">
+                                            <span class="text-[10px] font-mono uppercase tracking-widest font-bold text-navy-900 bg-bronze-500/20 px-2 py-0.5 rounded">
+                                                Capa 4 Externa
+                                            </span>
+                                            <span class="text-[10px] font-mono text-bronze-700 font-bold">10,5 x 15,5 cm</span>
+                                        </div>
+
+                                        <div class="my-auto">
+                                            <div class="w-14 h-14 mx-auto rounded-full bg-bronze-500/20 border border-bronze-500/40 flex items-center justify-center mb-3">
+                                                <svg class="w-7 h-7 text-bronze-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                                            </div>
+                                            <h4 class="font-serif font-bold text-navy-950 text-base leading-tight">
+                                                Sua Marca em Destaque Absoluto
+                                            </h4>
+                                            <p class="text-[11px] text-navy-800/80 mt-1 font-light max-w-[200px] mx-auto">
+                                                Visível imediatamente em qualquer mesa ou cabeceira sem abrir o livro.
+                                            </p>
+                                        </div>
+
+                                        <div class="w-full pt-2 border-t border-bronze-500/30 text-[9px] font-mono text-navy-700/60 flex justify-between">
+                                            <span>365 Dias Exposta</span>
+                                            <span>Posição #1</span>
+                                        </div>
                                     </div>
-                                    <h4 id="blueprint-title" class="font-serif font-bold text-navy-950 text-sm leading-tight">
-                                        Espaço da Sua Marca
-                                    </h4>
-                                    <p id="blueprint-desc" class="text-[10px] text-navy-800/70 mt-1 font-mono">
-                                        Página Inteira: 105 x 155 mm
-                                    </p>
                                 </div>
 
-                                <div class="w-full border-t border-navy-900/10 pt-1.5 flex justify-between items-center text-[9px] text-navy-700/60 font-mono">
-                                    <span>Margem Segura: 10mm</span>
-                                    <span>3mm Sangria</span>
+                                <!-- VISÃO 2: LIVRO ABERTO (SPREAD EM 2 PÁGINAS) -->
+                                <div id="view-spread" class="book-view hidden w-[340px] sm:w-[420px] h-[310px] sm:h-[325px] rounded-lg shadow-2xl flex relative overflow-hidden transition-all duration-700">
+                                    
+                                    <!-- PÁGINA ESQUERDA -->
+                                    <div id="page-left" class="w-1/2 h-full paper-sheet p-3.5 sm:p-4 border-r border-navy-900/10 flex flex-col justify-between relative">
+                                        <div class="absolute right-0 top-0 bottom-0 w-4 spine-shadow pointer-events-none"></div>
+                                        <div id="content-left">
+                                            <!-- Conteúdo dinâmico preenchido via JS -->
+                                        </div>
+                                    </div>
+
+                                    <!-- PÁGINA DIREITA -->
+                                    <div id="page-right" class="w-1/2 h-full paper-sheet p-3.5 sm:p-4 border-l border-navy-900/10 flex flex-col justify-between relative">
+                                        <div class="absolute left-0 top-0 bottom-0 w-4 spine-shadow pointer-events-none"></div>
+                                        <div id="content-right">
+                                            <!-- Conteúdo dinâmico preenchido via JS -->
+                                        </div>
+                                    </div>
+
                                 </div>
+
                             </div>
+                        </div>
 
+                        <!-- LEGENDA DA COTAÇÃO TÉCNICA -->
+                        <div class="mt-4 flex items-center justify-center gap-6 text-xs text-navy-700/70 font-mono">
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded-full border border-bronze-500 bg-bronze-500/20 inline-block"></span>
+                                Área de Impressão: <strong>10,5 x 15,5 cm</strong>
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <span class="w-3 h-3 rounded border border-navy-900/20 bg-sand-200 inline-block"></span>
+                                Margem de Respiro: <strong>10 mm</strong>
+                            </span>
                         </div>
                     </div>
 
-                    <!-- DETALHES TÉCNICOS E VALOR -->
-                    <div class="md:col-span-7">
+                    <!-- PAINEL DESCRITIVO & VALOR DA COTA -->
+                    <div class="lg:col-span-6">
                         <div class="flex items-center gap-3 mb-2">
                             <span id="slot-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-bronze-500/20 text-bronze-700">
                                 1 Vaga Exclusiva
@@ -333,6 +412,25 @@
                             A posição de maior visibilidade externa do livro. Sua marca fica exposta na contracapa traseira, visível imediatamente sempre que o devocional estiver pousado em qualquer mesa, balcão ou estante, sem que o leitor precise abrir a obra.
                         </p>
 
+                        <!-- SELETOR DE MÊS ATIVO (SELECIONÁVEL CASO SEJA A ABA MESES) -->
+                        <div id="month-picker" class="hidden mb-6 bg-sand-100 p-4 rounded-xl border border-sand-300">
+                            <span class="text-xs font-semibold text-navy-950 block mb-2">Selecione o mês para visualizar a folha de abertura:</span>
+                            <div class="grid grid-cols-4 sm:grid-cols-6 gap-1.5 text-center text-xs font-medium">
+                                <button onclick="previewMonth('Janeiro')" class="month-btn py-1.5 px-1 rounded bg-navy-900 text-white font-bold">Jan</button>
+                                <button onclick="previewMonth('Fevereiro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Fev</button>
+                                <button onclick="previewMonth('Março')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Mar</button>
+                                <button onclick="previewMonth('Abril')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Abr</button>
+                                <button onclick="previewMonth('Maio')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Mai</button>
+                                <button onclick="previewMonth('Junho')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Jun</button>
+                                <button onclick="previewMonth('Julho')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Jul</button>
+                                <button onclick="previewMonth('Agosto')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Ago</button>
+                                <button onclick="previewMonth('Setembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Set</button>
+                                <button onclick="previewMonth('Outubro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Out</button>
+                                <button onclick="previewMonth('Novembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Nov</button>
+                                <button onclick="previewMonth('Dezembro')" class="month-btn py-1.5 px-1 rounded bg-white text-navy-900 border border-sand-300 hover:bg-sand-200">Dez</button>
+                            </div>
+                        </div>
+
                         <div class="bg-sand-100 rounded-xl p-4 border border-sand-300 mb-6 space-y-2 text-xs text-navy-900">
                             <div class="flex items-center justify-between">
                                 <span class="text-navy-700/70 font-medium">Dimensão de Impressão:</span>
@@ -348,7 +446,7 @@
                             </div>
                         </div>
 
-                        <a id="slot-cta" href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Contracapa%20Master%20(R$%2010.000)%20no%20Palavra%20do%20Dia." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-xl bg-navy-900 text-sand-50 font-semibold text-xs uppercase tracking-wider hover:bg-navy-800 shadow-md transition-all">
+                        <a id="slot-cta" href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Contracapa%20Master%20(R$%2010.000)%20no%20Palavra%20do%20Dia." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 rounded-xl bg-navy-900 text-sand-50 font-semibold text-xs uppercase tracking-wider hover:bg-navy-800 shadow-md transition-all">
                             <span>Solicitar Reserva Deste Espaço</span>
                             <svg class="w-4 h-4 text-bronze-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                         </a>
@@ -490,22 +588,6 @@
                             <span class="text-3xl font-serif font-bold text-navy-950">R$ 1.000</span>
                             <span class="text-xs text-navy-700/60">por mês / cota única</span>
                         </div>
-
-                        <!-- SELETOR DE MESES ILUSTRATIVO -->
-                        <div class="grid grid-cols-4 sm:grid-cols-6 gap-2 mb-6 text-center text-xs">
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Jan</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Fev</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Mar</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Abr</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Mai</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Jun</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Jul</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Ago</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Set</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Out</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Nov</span>
-                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Dez</span>
-                        </div>
                     </div>
 
                     <a href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20consultar%20a%20disponibilidade%20de%20meses%20no%20Palavra%20do%20Dia%20(R$%201.000)." target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-sand-100 font-semibold text-xs uppercase tracking-wider text-center transition-all shadow-sm">
@@ -517,18 +599,69 @@
         </div>
     </section>
 
-    <!-- SOBRE O AUTOR E A MISSÃO -->
-    <section class="py-16 px-4 bg-sand-100 border-t border-sand-300">
-        <div class="max-w-4xl mx-auto text-center">
-            <span class="text-xs uppercase tracking-widest text-bronze-600 font-bold block mb-2">Liderança Pastoral</span>
-            <h2 class="font-serif text-3xl font-bold text-navy-950 mb-6">Uma Palavra de Fé & Esperança</h2>
+    <!-- ============================================================== -->
+    <!-- SEÇÃO: SOBRE O AUTOR (PASTOR FREDERICO REIS & SÍNTESE DA LINGUETA) -->
+    <!-- ============================================================== -->
+    <section id="autor" class="py-20 px-4 bg-sand-100 border-t border-sand-300">
+        <div class="max-w-5xl mx-auto">
             
-            <blockquote class="font-serif italic text-lg sm:text-xl text-navy-900/90 leading-relaxed mb-6 max-w-2xl mx-auto">
-                "Deus não está apenas no alto, Ele está no meio da nossa rotina e do nosso dia a dia. E onde Ele está, sempre nasce um novo recomeço."
-            </blockquote>
-            
-            <span class="font-bold text-navy-950 block text-sm">Pr. Frederico Reis</span>
-            <span class="text-xs text-navy-700/60 uppercase tracking-widest font-semibold block mt-0.5">Igreja Batista Memorial de Macaé</span>
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-sand-300 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-16 -bottom-16 w-64 h-64 bg-bronze-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
+                    
+                    <!-- FOTO DO AUTOR -->
+                    <div class="md:col-span-5 flex justify-center">
+                        <div class="relative group">
+                            <div class="absolute -inset-2 bg-gradient-to-tr from-bronze-500/30 to-navy-900/30 rounded-3xl blur-md -z-10 group-hover:blur-lg transition-all"></div>
+                            <div class="w-64 sm:w-72 aspect-[3/4] rounded-2xl overflow-hidden border-4 border-white shadow-2xl bg-sand-200">
+                                <img 
+                                    src="pastor-fred.png" 
+                                    alt="Pastor Frederico Reis — Autor do Livro Palavra do Dia" 
+                                    class="w-full h-full object-cover object-top filter contrast-[1.03] transition-transform duration-700 group-hover:scale-105"
+                                    onerror="this.src='pr-frederico.jpg'"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BIOGRAFIA E SÍNTESE DA LINGUETA -->
+                    <div class="md:col-span-7 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sand-200 text-bronze-700 text-xs font-bold uppercase tracking-wider mb-4">
+                            <span>Sobre o Autor</span>
+                        </div>
+
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-navy-950 mb-2">
+                            Pr. Frederico Reis
+                        </h2>
+                        <span class="text-sm font-semibold text-bronze-600 uppercase tracking-widest block mb-6">
+                            Igreja Batista Memorial de Macaé
+                        </span>
+
+                        <!-- TEXTO OFICIAL DA LINGUETA DO LIVRO -->
+                        <div class="space-y-4 text-navy-800/85 font-light text-sm sm:text-base leading-relaxed">
+                            <p>
+                                <strong>Frederico Reis</strong> é pastor presidente da <strong>Igreja Batista Memorial de Macaé (IBMM)</strong>, comunicador e escritor. Com uma linguagem simples, acolhedora e profundamente bíblica, tem dedicado sua trajetória a inspirar pessoas a encontrarem a presença de Deus no meio da rotina e dos desafios do cotidiano.
+                            </p>
+                            <p>
+                                É o idealizador do devocional <strong>Palavra do Dia</strong>, um movimento diário de fé e saúde emocional que diariamente conecta milhares de lares, profissionais e famílias a mensagens de esperança, resiliência e propósito.
+                            </p>
+                        </div>
+
+                        <div class="mt-6 pt-6 border-t border-sand-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <blockquote class="font-serif italic text-xs sm:text-sm text-navy-700/80">
+                                "Onde Deus está, sempre nasce um novo começo."
+                            </blockquote>
+                            <a href="https://instagram.com/fredreis77" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-navy-900 hover:text-bronze-600 transition-colors">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.13-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                <span>@fredreis77</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -607,102 +740,279 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT: CONTROLE DO GABARITO INTERATIVO -->
+    <!-- JAVASCRIPT: MOTOR 3D INTERATIVO E GABARITO TÉCNICO -->
     <script>
-        const slotData = {
+        let currentMonthName = "Janeiro";
+
+        const slotConfigurations = {
             contracapa: {
-                tag: "Capa 4 Externa (Trás)",
-                title: "Contracapa Master",
-                desc: "Página Inteira: 105 x 155 mm",
+                view: "contracapa",
                 badge: "1 Vaga Exclusiva",
                 name: "Contracapa Master (Capa 4 Externa)",
                 price: "R$ 10.000",
                 explanation: "A posição de maior visibilidade externa do livro. Sua marca fica exposta na contracapa traseira, visível imediatamente sempre que o devocional estiver pousado em qualquer mesa, balcão ou estante, sem que o leitor precise abrir a obra.",
                 status: "Disponível para Reserva",
                 ctaText: "Solicitar Reserva da Contracapa",
-                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Contracapa%20Master%20(R$%2010.000)%20no%20Palavra%20do%20Dia."
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Contracapa%20Master%20(R$%2010.000)%20no%20Palavra%20do%20Dia.",
+                showMonths: false
             },
             honra: {
-                tag: "1ª Página Interna",
-                title: "Página de Honra",
-                desc: "Página Inteira: 105 x 155 mm",
+                view: "spread",
+                leftType: "presentation",
+                rightType: "ad-honra",
                 badge: "1 Vaga Exclusiva",
                 name: "Página de Honra (Abertura Inicial)",
                 price: "R$ 8.000",
-                explanation: "A primeira página interna que o leitor folheia logo após a capa. É a posição mais prestigiosa para apresentar a história, os valores ou uma mensagem institucional calorosa da sua empresa antes do início das leituras diárias.",
+                explanation: "A primeira página interna que o leitor folheia logo após a capa. É a posição mais prestigiosa para apresentar a história, os valores ou uma mensagem institucional calorosa da sua empresa antes do início das reflexões.",
                 status: "Disponível para Reserva",
                 ctaText: "Solicitar Reserva da Página de Honra",
-                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Página%20de%20Honra%20(R$%208.000)%20no%20Palavra%20do%20Dia."
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Página%20de%20Honra%20(R$%208.000)%20no%20Palavra%20do%20Dia.",
+                showMonths: false
             },
             capa2: {
-                tag: "Verso da Capa Frontal",
-                title: "2ª Capa Interna",
-                desc: "Página Inteira: 105 x 155 mm",
+                view: "spread",
+                leftType: "ad-capa2",
+                rightType: "first-leaf",
                 badge: "1 Vaga Exclusiva",
                 name: "Segunda Capa Interna (Verso Frente)",
                 price: "R$ 5.000",
                 explanation: "A face interna da capa de abertura. Uma página nobre que salta aos olhos sempre que o leitor abre o livro para iniciar suas manhãs de reflexão.",
                 status: "Disponível para Reserva",
                 ctaText: "Solicitar Reserva da 2ª Capa",
-                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Segunda%20Capa%20Interna%20(R$%205.000)%20no%20Palavra%20do%20Dia."
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Segunda%20Capa%20Interna%20(R$%205.000)%20no%20Palavra%20do%20Dia.",
+                showMonths: false
             },
             capa3: {
-                tag: "Verso da Contracapa",
-                title: "3ª Capa Interna",
-                desc: "Página Inteira: 105 x 155 mm",
+                view: "spread",
+                leftType: "last-devotion",
+                rightType: "ad-capa3",
                 badge: "1 Vaga Exclusiva",
                 name: "Terceira Capa Interna (Verso Trás)",
                 price: "R$ 5.000",
                 explanation: "A face interna da contracapa traseira. Visualizada em todo fechamento do livro com máxima elegância e presença constante na rotina do leitor.",
                 status: "Disponível para Reserva",
                 ctaText: "Solicitar Reserva da 3ª Capa",
-                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Terceira%20Capa%20Interna%20(R$%205.000)%20no%20Palavra%20do%20Dia."
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Terceira%20Capa%20Interna%20(R$%205.000)%20no%20Palavra%20do%20Dia.",
+                showMonths: false
             },
             meses: {
-                tag: "Virada Mensal (Jan a Dez)",
-                title: "Abertura de Mês",
-                desc: "Página Inteira: 105 x 155 mm",
+                view: "spread",
+                leftType: "month-close",
+                rightType: "ad-mes",
                 badge: "12 Vagas (1 por Mês)",
                 name: "Abertura Mensal (Janeiro a Dezembro)",
                 price: "R$ 1.000",
-                explanation: "Página nobre de transição no início de cada mês do ano. Sua empresa se conecta com exclusividade ao mês temático que mais faz sentido para a sua estratégia (Mês das Mães, Aniversário da Marca, Dia dos Pais, etc.).",
+                explanation: "Página nobre de transição no início de cada mês do ano. Sua empresa se conecta com exclusividade ao mês temático que mais faz sentido para a sua estratégia comercial.",
                 status: "12 Meses em Aberto",
                 ctaText: "Consultar Disponibilidade do Mês",
-                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20disponibilidade%20de%20meses%20(R$%201.000)%20no%20Palavra%20do%20Dia."
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20disponibilidade%20de%20meses%20(R$%201.000)%20no%20Palavra%20do%20Dia.",
+                showMonths: true
             }
         };
 
-        function selectSlot(slotKey) {
-            const data = slotData[slotKey];
-            if (!data) return;
+        function setBookState(stateKey) {
+            const config = slotConfigurations[stateKey];
+            if (!config) return;
 
-            // Atualiza botões
+            // 1. Atualiza classes das abas de navegação
             document.querySelectorAll('.slot-tab').forEach(btn => {
                 btn.classList.remove('bg-navy-900', 'text-sand-100', 'shadow-md');
                 btn.classList.add('bg-white', 'text-navy-900', 'border', 'border-sand-400');
+                const dot = btn.querySelector('span');
+                if (dot) {
+                    dot.classList.remove('bg-bronze-500');
+                    dot.classList.add('bg-slate-300');
+                }
             });
-            const activeBtn = document.getElementById('btn-' + slotKey);
-            if (activeBtn) {
-                activeBtn.classList.remove('bg-white', 'text-navy-900', 'border', 'border-sand-400');
-                activeBtn.classList.add('bg-navy-900', 'text-sand-100', 'shadow-md');
+            const activeTab = document.getElementById('tab-' + stateKey);
+            if (activeTab) {
+                activeTab.classList.remove('bg-white', 'text-navy-900', 'border', 'border-sand-400');
+                activeTab.classList.add('bg-navy-900', 'text-sand-100', 'shadow-md');
+                const dot = activeTab.querySelector('span');
+                if (dot) {
+                    dot.classList.remove('bg-slate-300');
+                    dot.classList.add('bg-bronze-500');
+                }
             }
 
-            // Atualiza o Blueprint da página
-            document.getElementById('blueprint-tag').textContent = data.tag;
-            document.getElementById('blueprint-title').textContent = data.title;
-            document.getElementById('blueprint-desc').textContent = data.desc;
+            // 2. Animação e visual do Livro 3D
+            const book = document.getElementById('interactive-book');
+            const viewContracapa = document.getElementById('view-contracapa');
+            const viewSpread = document.getElementById('view-spread');
 
-            // Atualiza os dados do painel lateral
-            document.getElementById('slot-badge').textContent = data.badge;
-            document.getElementById('slot-name').textContent = data.name;
-            document.getElementById('slot-price').textContent = data.price;
-            document.getElementById('slot-explanation').textContent = data.explanation;
-            document.getElementById('slot-status').textContent = data.status;
-            
+            if (config.view === "contracapa") {
+                // Livro fechado virado de costas
+                book.style.transform = "rotateY(0deg) rotateX(4deg) scale(1.02)";
+                viewContracapa.classList.remove('hidden');
+                viewSpread.classList.add('hidden');
+            } else {
+                // Livro aberto em 2 páginas
+                book.style.transform = "rotateY(-4deg) rotateX(6deg) scale(1)";
+                viewContracapa.classList.add('hidden');
+                viewSpread.classList.remove('hidden');
+
+                renderSpreadPages(config.leftType, config.rightType);
+            }
+
+            // 3. Atualiza painel descritivo
+            document.getElementById('slot-badge').textContent = config.badge;
+            document.getElementById('slot-name').textContent = config.name;
+            document.getElementById('slot-price').textContent = config.price;
+            document.getElementById('slot-explanation').textContent = config.explanation;
+            document.getElementById('slot-status').textContent = config.status;
+
             const cta = document.getElementById('slot-cta');
-            cta.querySelector('span').textContent = data.ctaText;
-            cta.href = `https://wa.me/5522998586180?text=${data.whatsappMessage}`;
+            cta.querySelector('span').textContent = config.ctaText;
+            cta.href = `https://wa.me/5522998586180?text=${config.whatsappMessage}`;
+
+            // 4. Controle do seletor de meses
+            const monthPicker = document.getElementById('month-picker');
+            if (config.showMonths) {
+                monthPicker.classList.remove('hidden');
+            } else {
+                monthPicker.classList.add('hidden');
+            }
         }
+
+        function renderSpreadPages(leftType, rightType) {
+            const leftEl = document.getElementById('content-left');
+            const rightEl = document.getElementById('content-right');
+
+            // Renderiza lado esquerdo
+            if (leftType === "ad-capa2") {
+                leftEl.innerHTML = `
+                    <div class="ad-spotlight rounded-lg p-2.5 h-full flex flex-col justify-between text-center">
+                        <div class="border-b border-bronze-500/30 pb-1 text-[8px] font-mono text-bronze-700 font-bold uppercase">
+                            2ª Capa Interna
+                        </div>
+                        <div class="my-auto py-1">
+                            <span class="block font-serif font-bold text-navy-950 text-xs">Página da Sua Marca</span>
+                            <span class="text-[9px] text-navy-700/70 font-mono">10,5 x 15,5 cm</span>
+                        </div>
+                        <div class="text-[7.5px] font-mono text-navy-700/60 border-t border-bronze-500/30 pt-1">
+                            Verso da Capa Frontal
+                        </div>
+                    </div>
+                `;
+            } else if (leftType === "presentation") {
+                leftEl.innerHTML = `
+                    <div class="h-full flex flex-col justify-between text-navy-900/60 text-[9px] font-light">
+                        <div class="border-b border-navy-900/10 pb-1 text-[8px] font-mono uppercase">Folha de Rosto</div>
+                        <div class="my-auto text-center">
+                            <span class="font-serif font-bold text-navy-900 text-xs block">Palavra do Dia</span>
+                            <span class="text-[8px] block mt-1">Pr. Frederico Reis</span>
+                            <div class="w-8 h-0.5 bg-bronze-500/40 mx-auto my-2"></div>
+                            <span class="text-[7.5px] italic text-navy-700/70">Edição 2026/2027</span>
+                        </div>
+                        <div class="text-[7.5px] font-mono text-center">Igreja Batista Memorial</div>
+                    </div>
+                `;
+            } else if (leftType === "last-devotion") {
+                leftEl.innerHTML = `
+                    <div class="h-full flex flex-col justify-between text-[9px] font-light text-navy-900/70">
+                        <div class="text-[8px] font-mono border-b border-navy-900/10 pb-1">31/12 • Encerramento</div>
+                        <div class="my-auto">
+                            <span class="font-serif font-bold text-navy-950 text-[11px] block mb-1">Último Dia do Ano</span>
+                            <p class="text-[8px] leading-relaxed text-navy-800/80">
+                                "Você venceu mais um ano. O Senhor foi fiel em cada detalhe da sua caminhada..."
+                            </p>
+                        </div>
+                        <div class="text-[7px] text-right font-mono">Página 365</div>
+                    </div>
+                `;
+            } else {
+                leftEl.innerHTML = `
+                    <div class="h-full flex flex-col justify-between text-[9px] font-light text-navy-900/70">
+                        <div class="text-[8px] font-mono border-b border-navy-900/10 pb-1">Reflexão Diária</div>
+                        <div class="my-auto">
+                            <span class="font-serif font-bold text-navy-950 text-[11px] block mb-1">Pausa para a Alma</span>
+                            <p class="text-[8px] leading-relaxed text-navy-800/80">
+                                "A presença de Deus transforma o ritmo acelerado em paz e direção segura..."
+                            </p>
+                        </div>
+                        <div class="text-[7px] text-right font-mono">Devocional Diário</div>
+                    </div>
+                `;
+            }
+
+            // Renderiza lado direito
+            if (rightType === "ad-honra") {
+                rightEl.innerHTML = `
+                    <div class="ad-spotlight rounded-lg p-2.5 h-full flex flex-col justify-between text-center">
+                        <div class="border-b border-bronze-500/30 pb-1 text-[8px] font-mono text-bronze-700 font-bold uppercase">
+                            Página de Honra #1
+                        </div>
+                        <div class="my-auto py-1">
+                            <span class="block font-serif font-bold text-navy-950 text-xs">Abertura Institucional</span>
+                            <span class="text-[9px] text-navy-700/70 font-mono">10,5 x 15,5 cm</span>
+                            <span class="text-[7.5px] text-emerald-800 font-semibold block mt-1">1ª Página Que o Leitor Vê</span>
+                        </div>
+                        <div class="text-[7.5px] font-mono text-navy-700/60 border-t border-bronze-500/30 pt-1">
+                            Espaço Nobre Exclusivo
+                        </div>
+                    </div>
+                `;
+            } else if (rightType === "ad-capa3") {
+                rightEl.innerHTML = `
+                    <div class="ad-spotlight rounded-lg p-2.5 h-full flex flex-col justify-between text-center">
+                        <div class="border-b border-bronze-500/30 pb-1 text-[8px] font-mono text-bronze-700 font-bold uppercase">
+                            3ª Capa Interna
+                        </div>
+                        <div class="my-auto py-1">
+                            <span class="block font-serif font-bold text-navy-950 text-xs">Página de Fechamento</span>
+                            <span class="text-[9px] text-navy-700/70 font-mono">10,5 x 15,5 cm</span>
+                        </div>
+                        <div class="text-[7.5px] font-mono text-navy-700/60 border-t border-bronze-500/30 pt-1">
+                            Verso da Contracapa
+                        </div>
+                    </div>
+                `;
+            } else if (rightType === "ad-mes") {
+                rightEl.innerHTML = `
+                    <div class="ad-spotlight rounded-lg p-2.5 h-full flex flex-col justify-between text-center">
+                        <div class="border-b border-bronze-500/30 pb-1 text-[8px] font-mono text-bronze-700 font-bold uppercase">
+                            Patrocínio de ${currentMonthName}
+                        </div>
+                        <div class="my-auto py-1">
+                            <span class="block font-serif font-bold text-navy-950 text-xs">Abertura de ${currentMonthName}</span>
+                            <span class="text-[9px] text-navy-700/70 font-mono">10,5 x 15,5 cm</span>
+                            <span class="text-[7.5px] text-bronze-700 font-semibold block mt-1">1 Parceiro Oficial no Mês</span>
+                        </div>
+                        <div class="text-[7.5px] font-mono text-navy-700/60 border-t border-bronze-500/30 pt-1">
+                            Página de Transição Mensal
+                        </div>
+                    </div>
+                `;
+            } else {
+                rightEl.innerHTML = `
+                    <div class="h-full flex flex-col justify-between text-[9px] font-light text-navy-900/70">
+                        <div class="text-[8px] font-mono border-b border-navy-900/10 pb-1">01/01 • Quinta-Feira</div>
+                        <div class="my-auto">
+                            <span class="font-serif font-bold text-navy-950 text-[11px] block mb-1">Bom Dia, Ano Novo!</span>
+                            <p class="text-[8px] leading-relaxed text-navy-800/80">
+                                "Viramos a folha do calendário com o coração pronto para os recomeços de Deus..."
+                            </p>
+                        </div>
+                        <div class="text-[7px] text-right font-mono">Página 1</div>
+                    </div>
+                `;
+            }
+        }
+
+        function previewMonth(monthName) {
+            currentMonthName = monthName;
+            document.querySelectorAll('.month-btn').forEach(btn => {
+                btn.classList.remove('bg-navy-900', 'text-white', 'font-bold');
+                btn.classList.add('bg-white', 'text-navy-900', 'border', 'border-sand-300');
+            });
+            event.target.classList.remove('bg-white', 'text-navy-900', 'border', 'border-sand-300');
+            event.target.classList.add('bg-navy-900', 'text-white', 'font-bold');
+
+            renderSpreadPages("month-close", "ad-mes");
+        }
+
+        // Inicializa no estado da Contracapa Master
+        setBookState('contracapa');
     </script>
 </body>
 </html>
