@@ -3,774 +3,706 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palavra do Dia 2026 - Oportunidade Comercial</title>
+    <title>Palavra do Dia 2026/2027 — Patrocínio Institucional Exclusivo</title>
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Meta SEO -->
+    <meta name="description" content="Oportunidade de patrocínio institucional exclusivo no livro devocional Palavra do Dia. Formato de bolso 10,5 x 15,5 cm com presença garantida por 365 dias nos lares de Macaé e região.">
     
-    <!-- Fonts -->
+    <!-- Google Fonts: Editorial Serif + Clean Modern Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Configuração React -->
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "framer-motion": "https://esm.sh/framer-motion@10.16.4?external=react,react-dom",
-    "lucide-react": "https://esm.sh/lucide-react@0.292.0?external=react,react-dom"
-  }
-}
-</script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sand: {
+                            50: '#FDFBF7',
+                            100: '#FAF7F2',
+                            200: '#F3EFE6',
+                            300: '#E7E0D2',
+                            400: '#D5CBB9',
+                            500: '#B8A890'
+                        },
+                        navy: {
+                            950: '#071822',
+                            900: '#0B2538',
+                            800: '#11354F',
+                            700: '#1A4A6D',
+                            600: '#276492'
+                        },
+                        bronze: {
+                            500: '#B89355',
+                            600: '#A07E44',
+                            700: '#846633'
+                        },
+                        charcoal: '#1A1D20'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        cinzel: ['"Cinzel"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
     <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #fffaf5;
-        color: #1e293b;
-      }
-      h1, h2, h3, h4, .font-serif {
-        font-family: 'Playfair Display', serif;
-      }
-      .bg-navy { background-color: #0f172a; }
-      .text-navy { color: #0f172a; }
-      .bg-gold { background-color: #fbbf24; }
-      .text-gold { color: #fbbf24; }
-      .border-gold { border-color: #fbbf24; }
-      
-      html {
-          scroll-behavior: smooth;
-      }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #FAF7F2;
+            color: #1A1D20;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#E8E2D5 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+        }
     </style>
 </head>
-<body>
-    <div id="root"></div>
+<body class="selection:bg-bronze-500 selection:text-white">
 
-    <script type="text/babel" data-type="module">
-        import React, { useState, useEffect } from 'react';
-        import { createRoot } from 'react-dom/client';
-        import { motion, AnimatePresence } from 'framer-motion';
-        import { 
-            Check, MessageCircle, Phone, Smartphone, ChevronRight, Star, 
-            BookOpen, User, Quote, X, QrCode, Globe, Video, 
-            Link as LinkIcon, Sparkles, RefreshCw, ArrowRight, ArrowLeft, 
-            Instagram, Youtube, Play, Wifi, Layout 
-        } from 'lucide-react';
+    <!-- BARRA SUPERIOR DE AVISO INSTITUCIONAL -->
+    <div class="bg-navy-950 text-sand-200 text-xs py-2 px-4 border-b border-white/10">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+            <span class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                <span><strong>Abertura de Reservas 2026/2027:</strong> Apenas 16 cotas impressas disponíveis.</span>
+            </span>
+            <span class="text-sand-400 text-[11px] uppercase tracking-wider font-medium">Formato de Bolso: 10,5 x 15,5 cm • 365 Dias</span>
+        </div>
+    </div>
 
-        // --- DADOS ---
-
-        const CONTACTS = [
-            { 
-                name: "Denis Pessanha", 
-                phone: "22999131266", 
-                display: "(22) 99913-1266", 
-                image: "denis.png",
-                fallback: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=200&h=200"
-            },
-            { 
-                name: "Bruno Assis", 
-                phone: "21988761524", 
-                display: "(21) 98876-1524", 
-                image: "bruno.png",
-                fallback: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=200&h=200"
-            },
-            { 
-                name: "Thiago Vitalino", 
-                phone: "22998586180", 
-                display: "(22) 99858-6180", 
-                image: "thiago.png",
-                fallback: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=200&h=200"
-            }
-        ];
-
-        const PASTOR_QUOTES = [
-            {
-                theme: "Restauração",
-                text: "Deus é especialista em ressignificar ruínas. Ele pega a pedra da vergonha e faz dela um altar de testemunho.",
-                source: "Pr. Frederico Reis"
-            },
-            {
-                theme: "Rotina e Presença",
-                text: "Deus não está apenas no alto, Ele está no meio. No meio da rotina, da casa e do calendário. E onde Ele está, sempre nasce um novo começo.",
-                source: "Pr. Frederico Reis"
-            },
-            {
-                theme: "Resiliência e Fé",
-                text: "A vitória do cristão não é a ausência de luta, é a presença de Deus nela. As circunstâncias podem marcar o corpo, mas só a Graça marca a alma.",
-                source: "Pr. Frederico Reis"
-            }
-        ];
-
-        const PLANS = [
-            {
-                id: 'diamond',
-                title: 'Plano Diamante',
-                price: 'R$ 5.000',
-                subtitle: 'Exclusividade Máxima',
-                description: 'Sua marca na parte externa mais nobre do livro: a Capa de Trás (Contracapa).',
-                features: ['1 Vaga Exclusiva', '160 Livros Bônus', 'Destaque SOLO em vídeo', 'Capa de Trás (Contracapa)'],
-                visualType: 'back-cover',
-                details: 'Visibilidade máxima na Capa de Trás. Sua marca exposta sem precisar abrir o livro.'
-            },
-            {
-                id: 'gold',
-                title: 'Plano Ouro',
-                price: 'R$ 2.500',
-                subtitle: 'Visibilidade Nobre',
-                description: 'Destaque nas capas internas (Capa 2 ou 3). Espaço compartilhado (2 anúncios por página).',
-                features: ['4 Vagas Disponíveis', '80 Livros Bônus', 'Logo nos Créditos', 'Meia Página (Interna)'],
-                visualType: 'half-page',
-                details: 'Alta visibilidade ao abrir e fechar o livro. Máximo 2 marcas por página.'
-            },
-            {
-                id: 'silver',
-                title: 'Plano Prata',
-                price: 'R$ 1.000',
-                subtitle: 'Grande Formato',
-                description: 'Anúncio de grande impacto visual (11cm x 5cm). Divide a página com apenas mais 2 empresas.',
-                features: ['12 Vagas Disponíveis', '40 Livros Bônus', '3 Inserções (Jan/Abr/Ago)', 'Formato 11cm x 5cm'],
-                visualType: 'chapter-start',
-                details: 'Formato largo (11cm) que permite arte completa e leitura fácil. 3 inserções anuais.'
-            },
-            {
-                id: 'bronze',
-                title: 'Plano Bronze',
-                price: 'R$ 300',
-                subtitle: 'Apoio e Comunidade',
-                description: 'Sua marca na lista oficial de apoiadores no site e mídias.',
-                features: ['20 Vagas (Meta)', '10 Livros Bônus', 'Presença Digital', 'Lista de Apoio'],
-                visualType: 'digital-list',
-                details: 'Ideal para estar presente e fomentar a comunidade.'
-            }
-        ];
-
-        // --- COMPONENTES ---
-
-        const WhatsAppButton = ({ contact, className = '' }) => (
-            <a 
-                href={`https://wa.me/55${contact.phone}?text=Olá ${contact.name}, gostaria de saber mais sobre o patrocínio do Palavra do Dia 2026.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center justify-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all shadow-md group ${className}`}
-            >
-                <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
-                <div className="text-left">
-                    <span className="block text-xs opacity-90 font-light">Falar com</span>
-                    <span className="block font-bold leading-none">{contact.name}</span>
+    <!-- CABEÇALHO -->
+    <header class="sticky top-0 z-40 bg-sand-100/90 backdrop-blur-md border-b border-sand-300/70 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="h-11 w-11 rounded-xl bg-navy-900 flex items-center justify-center p-2 text-sand-100 shadow-md">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="w-6 h-6">
+                        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                        <path d="M6 6h10"/>
+                        <path d="M6 10h10"/>
+                    </svg>
+                </div>
+                <div>
+                    <span class="font-serif font-bold text-lg text-navy-950 tracking-tight block group-hover:text-bronze-600 transition-colors">Palavra do Dia</span>
+                    <span class="text-[10px] tracking-widest uppercase text-navy-700/70 font-semibold block">Igreja Batista Memorial de Macaé</span>
                 </div>
             </a>
-        );
 
-        const BookMockup = ({ type }) => {
-            if (type === 'back-cover') {
-                return (
-                    <div className="relative w-48 h-72 bg-[#0f172a] rounded-l-md shadow-2xl transform rotate-y-12 border-r-4 border-gray-800 flex flex-col items-center justify-center p-4">
-                        <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none"></div>
-                        <div className="w-full h-full border border-[#fbbf24]/30 flex flex-col items-center justify-center text-center">
-                            <span className="text-[#fbbf24] text-xs uppercase tracking-widest mb-2">Espaço do</span>
-                            <span className="text-white font-serif text-xl font-bold">Patrocinador</span>
-                            <span className="text-[#fbbf24]/50 text-xs mt-2">Contracapa</span>
-                        </div>
-                    </div>
-                );
-            }
-            if (type === 'half-page') {
-                return (
-                    <div className="flex shadow-2xl">
-                        <div className="w-36 h-56 bg-white border-r border-gray-200 p-2 flex flex-col justify-between">
-                            {/* Anuncio 1 */}
-                            <div className="w-full h-[48%] bg-[#fbbf24]/10 border-2 border-dashed border-[#fbbf24] flex items-center justify-center">
-                                <span className="text-[#0f172a] font-bold text-[0.6rem] text-center">Anúncio 1<br/>(Ouro)</span>
-                            </div>
-                            {/* Anuncio 2 */}
-                            <div className="w-full h-[48%] bg-[#fbbf24]/10 border-2 border-dashed border-[#fbbf24] flex items-center justify-center">
-                                <span className="text-[#0f172a] font-bold text-[0.6rem] text-center">Anúncio 2<br/>(Ouro)</span>
-                            </div>
-                        </div>
-                        <div className="w-36 h-56 bg-white p-2">
-                             <div className="space-y-2 mt-4 opacity-30">
-                                <div className="h-2 w-full bg-gray-400 rounded"></div>
-                                <div className="h-2 w-5/6 bg-gray-400 rounded"></div>
-                                <div className="h-2 w-full bg-gray-400 rounded"></div>
-                                <div className="h-2 w-full bg-gray-400 rounded"></div>
-                                <div className="h-2 w-4/6 bg-gray-400 rounded"></div>
-                             </div>
-                        </div>
-                    </div>
-                );
-            }
-            if (type === 'chapter-start') { // PLANO PRATA
-                return (
-                    <div className="relative w-48 h-72 bg-white shadow-xl p-4 flex flex-col">
-                         <div className="text-center mt-2 mb-2">
-                            <span className="text-2xl font-serif text-[#0f172a]">JANEIRO</span>
-                            <div className="w-6 h-0.5 bg-[#fbbf24] mx-auto my-1"></div>
-                         </div>
-                         
-                         {/* Área de Anúncios Prata - Ajustado para parecer 11cm x 5cm */}
-                         <div className="mt-auto space-y-2">
-                            {/* Bloco 1 */}
-                            <div className="w-full h-12 border-2 border-[#fbbf24] bg-white flex flex-col items-center justify-center shadow-sm">
-                                <span className="text-[0.6rem] font-bold text-[#0f172a]">Patrocinador 1</span>
-                                <span className="text-[0.45rem] text-slate-500">11cm x 5cm</span>
-                            </div>
-                            {/* Bloco 2 */}
-                            <div className="w-full h-12 border border-slate-200 bg-slate-50 flex flex-col items-center justify-center">
-                                <span className="text-[0.6rem] font-bold text-slate-400">Patrocinador 2</span>
-                            </div>
-                            {/* Bloco 3 */}
-                            <div className="w-full h-12 border border-slate-200 bg-slate-50 flex flex-col items-center justify-center">
-                                <span className="text-[0.6rem] font-bold text-slate-400">Patrocinador 3</span>
-                            </div>
-                         </div>
-                         <div className="text-[0.5rem] text-center text-[#fbbf24] mt-2 uppercase tracking-wide font-bold">Plano Prata</div>
-                    </div>
-                );
-            }
-            return (
-                    <div className="w-56 h-40 bg-gray-900 rounded-lg shadow-xl border-t-4 border-[#fbbf24] p-4 flex flex-col items-center justify-center">
-                    <Smartphone className="text-white/20 w-12 h-12 mb-2" />
-                    <span className="text-white font-serif">Lista Digital</span>
-                    <span className="text-[#fbbf24] text-xs mt-1">Website & App</span>
-                    </div>
-            );
-        };
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-navy-800">
+                <a href="#proposito" class="hover:text-bronze-600 transition-colors">Por que o Livro?</a>
+                <a href="#gabarito" class="hover:text-bronze-600 transition-colors">Gabarito das Páginas</a>
+                <a href="#cotas" class="hover:text-bronze-600 transition-colors">Tabela de Investimento</a>
+                <a href="#consultores" class="hover:text-bronze-600 transition-colors">Contato</a>
+            </nav>
 
-        const Hero = () => (
-            <section className="relative bg-[#0f172a] text-white py-20 lg:py-28 overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                <div className="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#fffaf5] to-transparent z-10"></div>
+            <a href="#cotas" class="px-5 py-2.5 rounded-full bg-navy-900 text-sand-100 text-xs uppercase font-bold tracking-wider hover:bg-navy-800 hover:shadow-lg transition-all flex items-center gap-2">
+                <span>Reservar Cota</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="py-12 sm:py-20 px-4 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
                 
-                <div className="container mx-auto px-4 relative z-20">
-                    <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <!-- TEXTO HERO -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sand-200 border border-sand-300 text-navy-900 text-xs font-semibold tracking-wide uppercase mb-6">
+                        <span class="w-1.5 h-1.5 rounded-full bg-bronze-500"></span>
+                        Projeto Editorial e Institucional 2026/2027
+                    </div>
+
+                    <h1 class="font-serif text-3xl sm:text-5xl lg:text-5xl text-navy-950 font-bold leading-[1.18] tracking-tight mb-6">
+                        Sua marca presente todos os dias do ano no coração dos lares.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-navy-800/80 font-light leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                        O devocional <strong>Palavra do Dia</strong>, de autoria do <strong>Pr. Frederico Reis</strong>, chega à sua nova edição com acabamento editorial de alto padrão. Um formato de bolso intimista (<strong>10,5 x 15,5 cm</strong>) que permanece 365 dias na mesa de cabeceira e na rotina de milhares de famílias e líderes formadores de opinião.
+                    </p>
+
+                    <!-- PONTOS CHAVE -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8 text-left max-w-lg mx-auto lg:mx-0">
+                        <div class="p-3 bg-white/70 rounded-xl border border-sand-300/80">
+                            <span class="block text-xl font-serif font-bold text-navy-900">10,5×15,5 cm</span>
+                            <span class="text-xs text-navy-700/70 font-medium">Formato Pocket Nobre</span>
+                        </div>
+                        <div class="p-3 bg-white/70 rounded-xl border border-sand-300/80">
+                            <span class="block text-xl font-serif font-bold text-navy-900">365 Dias</span>
+                            <span class="text-xs text-navy-700/70 font-medium">Permanência Físíca</span>
+                        </div>
+                        <div class="p-3 bg-white/70 rounded-xl border border-sand-300/80 col-span-2 sm:col-span-1">
+                            <span class="block text-xl font-serif font-bold text-bronze-600">Apenas 16</span>
+                            <span class="text-xs text-navy-700/70 font-medium">Cotas Exclusivas</span>
+                        </div>
+                    </div>
+
+                    <!-- CTAS -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#gabarito" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-navy-900 text-sand-50 font-semibold text-sm hover:bg-navy-800 shadow-md hover:shadow-xl transition-all text-center flex items-center justify-center gap-2">
+                            <span>Ver Amostra das Páginas</span>
+                            <svg class="w-4 h-4 text-bronze-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </a>
+                        <a href="#cotas" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white border border-sand-400/80 text-navy-900 font-semibold text-sm hover:bg-sand-200 transition-all text-center">
+                            Conhecer Valores das Cotas
+                        </a>
+                    </div>
+                </div>
+
+                <!-- IMAGEM DO LIVRO (MOCKUP OFICIAL) -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Efeito de respiro de fundo -->
+                        <div class="absolute -inset-4 bg-gradient-to-tr from-bronze-500/10 via-sand-300/30 to-navy-900/10 rounded-3xl blur-2xl -z-10"></div>
                         
-                        <motion.div 
-                            className="w-full md:w-1/2 text-center md:text-left order-2 md:order-1"
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <div className="flex justify-center md:justify-start mb-6">
-                                 <div className="w-16 h-1 bg-[#fbbf24] rounded-full"></div>
-                            </div>
-                            <span className="inline-block py-1 px-3 border border-[#fbbf24] text-[#fbbf24] text-xs tracking-[0.2em] uppercase mb-6 rounded-full bg-[#0f172a]/50 backdrop-blur-sm">
-                                Projeto 2026
-                            </span>
-                            <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-6 text-white leading-tight drop-shadow-2xl">
-                                Seu Espaço na <span className="text-[#fbbf24] italic">História</span>
-                            </h1>
-                            <p className="text-lg md:text-xl font-light text-slate-300 max-w-xl mx-auto md:mx-0 mb-10 leading-relaxed">
-                                Apoie a iniciativa devocional multimodal liderada pelo Pr. Frederico Reis, integrando o físico e o digital em uma obra de impacto diário.
-                            </p>
-                            <a href="#planos" className="inline-flex items-center gap-2 bg-[#fbbf24] text-[#0f172a] px-8 py-4 rounded-full font-bold hover:bg-[#d97706] hover:text-white transition-all shadow-[0_0_20px_rgba(251,191,36,0.3)]">
-                                Ver Planos <ChevronRight size={20} />
-                            </a>
-                        </motion.div>
-
-                        <motion.div 
-                            className="w-full md:w-1/2 flex justify-center items-center order-1 md:order-2"
-                            initial={{ opacity: 0, x: 30, scale: 0.9 }}
-                            animate={{ opacity: 1, x: 0, scale: 1 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                        >
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-[#fbbf24] blur-[60px] opacity-20 group-hover:opacity-30 transition-opacity duration-500 rounded-full"></div>
-                                <div className="relative w-64 md:w-80 lg:w-96 aspect-[2/3] rounded-lg shadow-2xl transform transition-transform duration-500 hover:scale-[1.02] hover:-rotate-1">
-                                    <div className="absolute inset-0 bg-slate-800 rounded-lg flex items-center justify-center border border-white/10 z-0">
-                                        <span className="text-white/30 text-center px-4 text-sm">
-                                            Capa do Livro
-                                        </span>
-                                    </div>
-                                    <img 
-                                        src="capa-livro.png" 
-                                        alt="Capa do Livro" 
-                                        className="relative z-10 w-full h-full object-cover rounded-lg shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5"
-                                        onError={(e) => { 
-                                            e.target.src = 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=800&auto=format&fit=crop';
-                                        }}
-                                    />
-                                    <div className="absolute inset-0 rounded-lg ring-1 ring-inset ring-white/10 z-20 pointer-events-none"></div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                    </div>
-                </div>
-            </section>
-        );
-
-        const Intro = () => (
-            <section className="py-20 px-4 bg-white relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-32 h-32 bg-[#fbbf24]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#0f172a]/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-
-                <div className="container mx-auto max-w-4xl text-center relative z-10">
-                    <span className="text-[#fbbf24] font-bold tracking-widest text-xs uppercase mb-4 block">Sobre o Projeto</span>
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-[#0f172a] mb-8">Movimento de Fé & Constância</h2>
-                    
-                    <div className="space-y-6 text-lg text-slate-600 leading-relaxed text-justify md:text-center font-light">
-                        <p>
-                            O <strong>Palavra do Dia</strong> transcendeu a categoria de um simples devocional para se tornar um movimento digital de fé e inspiração.
-                        </p>
-                        <p>
-                            Sob a liderança pastoral de <strong>Pr. Frederico Reis</strong>, o projeto utiliza uma fundação estratégica robusta para comunicar o Evangelho. Ao associar sua marca a este projeto, sua empresa se alinha a valores de <strong>integridade, família e inovação</strong>.
-                        </p>
-                    </div>
-
-                    <div className="mt-12 p-8 bg-slate-50 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#fbbf24] to-transparent opacity-50"></div>
-                        <h3 className="text-xl font-serif font-bold text-[#0f172a] mb-2 flex items-center justify-center gap-2">
-                            <Star size={20} className="text-[#fbbf24]" fill="currentColor" /> Raio-X de Impacto
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                            <div className="p-4">
-                                <span className="block text-4xl font-bold text-[#fbbf24] mb-1 font-serif">253k+</span>
-                                <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">Contatos/Ano</span>
-                            </div>
-                            <div className="p-4 border-t md:border-t-0 md:border-l border-slate-200">
-                                <span className="block text-4xl font-bold text-[#fbbf24] mb-1 font-serif">1.000</span>
-                                <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">Exemplares Físicos</span>
-                            </div>
-                            <div className="p-4 border-t md:border-t-0 md:border-l border-slate-200">
-                                <span className="block text-4xl font-bold text-[#fbbf24] mb-1 font-serif">365</span>
-                                <span className="text-xs text-slate-500 uppercase tracking-widest font-bold">Dias de Vitrine</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        );
-
-        const EcosystemSection = () => (
-            <section className="py-20 px-4 bg-[#fffaf5] relative border-b border-gray-100">
-                <div className="container mx-auto max-w-6xl">
-                    <div className="text-center mb-16">
-                        <span className="text-[#fbbf24] font-bold tracking-widest text-xs uppercase mb-3 block">Estratégia & Tecnologia</span>
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#0f172a] mb-6">Um Ecossistema Multimodal</h2>
-                        <p className="text-lg text-slate-600 max-w-3xl mx-auto font-light">
-                            O projeto integra múltiplas plataformas para garantir que a mensagem — e sua marca — alcance o público onde ele estiver.
-                        </p>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <motion.div 
-                            className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative overflow-hidden"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
-                        >
-                            <div className="w-14 h-14 bg-[#0f172a]/5 rounded-xl flex items-center justify-center mb-6 text-[#0f172a]">
-                                <QrCode size={32} />
-                            </div>
-                            <h3 className="text-xl font-serif font-bold text-[#0f172a] mb-3">Redirecionamento Inteligente</h3>
-                            <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                                QR Codes estrategicamente posicionados no material impresso conectam o mundo físico ao digital, criando uma ponte direta para conversão.
-                            </p>
-                            <ul className="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
-                                <li className="flex items-center gap-2"><Check size={12} className="text-[#fbbf24]" /> Rastreabilidade de origem</li>
-                                <li className="flex items-center gap-2"><Check size={12} className="text-[#fbbf24]" /> Experiência Phygital</li>
-                            </ul>
-                        </motion.div>
-
-                        <motion.div 
-                            className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative overflow-hidden transform md:-translate-y-4"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                        >
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-[#fbbf24]/10 rounded-bl-full -mr-4 -mt-4"></div>
-                            <div className="w-14 h-14 bg-[#fbbf24] rounded-xl flex items-center justify-center mb-6 text-[#0f172a] shadow-lg shadow-[#fbbf24]/30">
-                                <LinkIcon size={32} />
-                            </div>
-                            <h3 className="text-xl font-serif font-bold text-[#0f172a] mb-3">Hub Central (Beacons.ai)</h3>
-                            <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                                Utilizamos a plataforma Beacons.ai Pro como hub central de distribuição, integrando landing pages de alta conversão e monetização.
-                            </p>
-                            <ul className="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
-                                <li className="flex items-center gap-2"><Check size={12} className="text-[#0f172a]" /> Landing Pages Otimizadas</li>
-                                <li className="flex items-center gap-2"><Check size={12} className="text-[#0f172a]" /> Analytics Integrado</li>
-                            </ul>
-                        </motion.div>
-
-                        <motion.div 
-                            className="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 relative overflow-hidden"
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            <div className="w-14 h-14 bg-[#0f172a]/5 rounded-xl flex items-center justify-center mb-6 text-[#0f172a]">
-                                <Video size={32} />
-                            </div>
-                            <h3 className="text-xl font-serif font-bold text-[#0f172a] mb-3">Distribuição em Vídeo</h3>
-                            <p className="text-slate-600 text-sm leading-relaxed mb-4">
-                                365 vídeos produzidos profissionalmente e distribuídos no <strong>Instagram, YouTube, Spotify e Facebook</strong>, garantindo um alcance massivo em todas as plataformas.
-                            </p>
-                            <ul className="text-xs text-slate-500 space-y-2 border-t border-slate-100 pt-4">
-                                <li className="flex items-center gap-2"><Check size={12} className="text-[#fbbf24]" /> Alcance Multiplataforma</li>
-                                <li className="flex items-center gap-2"><Check size={12} className="text-[#fbbf24]" /> Engajamento Diário</li>
-                            </ul>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-        );
-
-        const FeaturedMessage = () => {
-            return (
-                <section className="py-20 px-4 bg-[#0f172a] text-white relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                    <div className="container mx-auto max-w-5xl relative z-10">
-                        <div className="flex flex-col lg:flex-row items-center gap-12">
-                            <div className="lg:w-1/2">
-                                <span className="inline-flex items-center gap-2 text-[#fbbf24] font-bold tracking-widest text-xs uppercase mb-4 bg-white/10 px-3 py-1 rounded-full">
-                                    <Instagram size={14} /> O Conteúdo
-                                </span>
-                                <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">A Essência do Palavra do Dia</h2>
-                                <p className="text-slate-300 text-lg mb-8 font-light leading-relaxed">
-                                    Assista a um episódio real do projeto. Todos os dias, mensagens curtas e poderosas como esta chegam a milhares de pessoas, gerando reflexão e alto engajamento. É neste ambiente de credibilidade e constância que sua marca estará presente.
-                                </p>
-                                <div className="flex gap-4">
-                                    <a 
-                                        href="https://www.instagram.com/reel/DRRqCqRDrZX/" 
-                                        target="_blank" 
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-white border border-white/30 px-6 py-3 rounded-full hover:bg-white hover:text-[#0f172a] transition-all"
-                                    >
-                                        <Instagram size={18} /> Ver no Instagram
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="lg:w-1/2 w-full flex justify-center">
-                                <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 w-full max-w-[350px] aspect-[9/16] bg-black">
-                                    <iframe 
-                                        width="100%" 
-                                        height="100%" 
-                                        src="https://www.instagram.com/reel/DRRqCqRDrZX/embed" 
-                                        title="Palavra do Dia - Pr. Fred Reis" 
-                                        frameBorder="0" 
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                        allowFullScreen
-                                        className="absolute inset-0 w-full h-full"
-                                    ></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const PlanVideoSection = () => {
-            return (
-                <section className="py-16 px-4 bg-slate-50 border-b border-gray-200">
-                    <div className="container mx-auto max-w-4xl text-center">
-                        <span className="inline-flex items-center gap-2 text-navy font-bold tracking-widest text-xs uppercase mb-4 bg-gold/20 px-3 py-1 rounded-full">
-                            <Layout size={14} /> Detalhes Técnicos
-                        </span>
-                        <h2 className="text-2xl md:text-3xl font-serif font-bold text-navy mb-8">Entenda a Distribuição dos Espaços</h2>
-                        <p className="text-lg text-slate-600 mb-8 max-w-2xl mx-auto">
-                            Confira neste vídeo exclusivo a explicação detalhada dos layouts para os planos <strong>Diamante, Ouro e Prata</strong>, incluindo medidas e posicionamento.
-                        </p>
-                        
-                        {/* Player ajustado para Vertical (9:16) */}
-                        <div className="relative rounded-2xl overflow-hidden shadow-xl bg-black border border-slate-200 aspect-[9/16] flex items-center justify-center group max-w-sm mx-auto">
-                            <video 
-                                controls 
-                                className="w-full h-full object-cover"
-                                poster="capa-livro.png" 
-                            >
-                                <source src="video-planos.mp4" type="video/mp4" />
-                                Seu navegador não suporta a tag de vídeo.
-                            </video>
-                        </div>
-                        <p className="text-sm text-slate-500 mt-4 italic">
-                            *Demonstração da contracapa (Diamante), meias páginas (Ouro) e divisão de rodapé (Prata).
-                        </p>
-                    </div>
-                </section>
-            );
-        };
-
-        const PastorVoiceSection = () => {
-            const [currentIndex, setCurrentIndex] = useState(0);
-
-            const nextQuote = () => {
-                setCurrentIndex((prev) => (prev + 1) % PASTOR_QUOTES.length);
-            };
-
-            const prevQuote = () => {
-                setCurrentIndex((prev) => (prev - 1 + PASTOR_QUOTES.length) % PASTOR_QUOTES.length);
-            };
-
-            useEffect(() => {
-                const timer = setInterval(nextQuote, 10000); 
-                return () => clearInterval(timer);
-            }, []);
-
-            return (
-                <section className="py-12 px-4 bg-white border-b border-gray-100">
-                    <div className="container mx-auto max-w-4xl">
-                        <div className="w-full relative">
-                            <div className="flex justify-end gap-2 mb-4">
-                                <button onClick={prevQuote} className="p-2 rounded-full bg-slate-50 hover:bg-slate-100 text-[#0f172a] transition-colors"><ArrowLeft size={20} /></button>
-                                <button onClick={nextQuote} className="p-2 rounded-full bg-slate-50 hover:bg-slate-100 text-[#0f172a] transition-colors"><ArrowRight size={20} /></button>
-                            </div>
-
-                            <div className="bg-[#fffaf5] rounded-3xl p-8 md:p-16 shadow-lg border border-[#fbbf24]/20 relative min-h-[320px] flex items-center justify-center text-center">
-                                <Quote size={80} className="absolute top-6 left-6 text-[#fbbf24]/10" />
-                                <Quote size={80} className="absolute bottom-6 right-6 text-[#fbbf24]/10 transform rotate-180" />
-                                
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={currentIndex}
-                                        initial={{ opacity: 0, y: 10 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -10 }}
-                                        transition={{ duration: 0.5 }}
-                                        className="relative z-10 w-full max-w-2xl mx-auto"
-                                    >
-                                        <span className="inline-block text-[#fbbf24] font-bold text-xs uppercase tracking-widest mb-6 border-b border-[#fbbf24] pb-1">
-                                            {PASTOR_QUOTES[currentIndex].theme}
-                                        </span>
-                                        <p className="text-2xl md:text-3xl font-serif text-[#0f172a] leading-relaxed italic mb-8">
-                                            "{PASTOR_QUOTES[currentIndex].text}"
-                                        </p>
-                                        <div className="flex flex-col items-center justify-center">
-                                            <span className="font-bold text-[#0f172a] text-lg">Pr. Frederico Reis</span>
-                                            <span className="text-xs text-slate-400 font-medium uppercase tracking-wide mt-1">
-                                                Palavra do Dia
-                                            </span>
-                                        </div>
-                                    </motion.div>
-                                </AnimatePresence>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const PlanSection = ({ plan, align = 'left' }) => {
-            return (
-                <motion.div 
-                    className={`flex flex-col md:flex-row items-center gap-8 md:gap-16 py-16 border-b border-gray-100 last:border-0 ${align === 'right' ? 'md:flex-row-reverse' : ''}`}
-                    initial={{ opacity: 0, y: 50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <div className="flex-1 flex justify-center items-center bg-white p-8 rounded-2xl w-full shadow-[0_10px_40px_-10px_rgba(0,0,0,0.05)] border border-slate-100">
-                        <BookMockup type={plan.visualType} />
-                    </div>
-                    <div className="flex-1 text-center md:text-left">
-                        <div className="flex flex-col md:flex-row items-center md:justify-between gap-3 mb-4">
-                            <h3 className="text-3xl font-serif font-bold text-[#0f172a]">{plan.title}</h3>
-                            <span className="bg-[#0f172a] text-[#fbbf24] px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-[#0f172a]/20">{plan.price}</span>
-                        </div>
-                        <p className="text-[#fbbf24] font-bold uppercase tracking-wider text-sm mb-4 flex items-center justify-center md:justify-start gap-2">
-                            {plan.id === 'diamond' && <Star size={16} fill="currentColor"/>}
-                            {plan.subtitle}
-                        </p>
-                        <div className="relative p-6 bg-slate-50 rounded-xl mb-8 border-l-4 border-[#fbbf24]">
-                            <Quote size={24} className="text-[#fbbf24]/20 absolute top-2 right-2" />
-                            <p className="text-lg text-slate-700 italic font-serif leading-relaxed">"{plan.description}"</p>
-                        </div>
-                        
-                        <ul className="space-y-3 mb-8">
-                            {plan.features.map((feature, idx) => (
-                                <li key={idx} className="flex items-center justify-center md:justify-start gap-2 text-slate-600">
-                                    <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                                        <Check size={12} className="text-green-600" />
-                                    </div>
-                                    {feature}
-                                </li>
-                            ))}
-                        </ul>
-                        
-                        <div className="text-sm text-slate-500 border-t border-dashed border-slate-200 pt-4 mt-4">
-                            <strong className="text-[#0f172a]">Destaque:</strong> {plan.details}
-                        </div>
-                    </div>
-                </motion.div>
-            );
-        };
-
-        const ComparisonTable = () => (
-            <section className="py-20 px-4 bg-[#0f172a] text-white relative">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-                <div className="container mx-auto max-w-6xl relative z-10">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-serif font-bold mb-4">Resumo dos Investimentos</h2>
-                        <p className="text-slate-400">Escolha o nível de impacto ideal para sua marca.</p>
-                    </div>
-                    
-                    <div className="overflow-x-auto bg-white rounded-xl shadow-2xl">
-                        <table className="w-full text-left border-collapse min-w-[800px]">
-                            <thead>
-                                <tr className="bg-slate-100 text-[#0f172a]">
-                                    <th className="p-6 font-serif font-bold text-sm uppercase tracking-wider">Plano</th>
-                                    <th className="p-6 font-serif font-bold text-sm uppercase tracking-wider">Investimento</th>
-                                    <th className="p-6 font-serif font-bold text-sm uppercase tracking-wider">Livros Bônus</th>
-                                    <th className="p-6 font-serif font-bold text-sm uppercase tracking-wider">Visibilidade Principal (Físico)</th>
-                                    <th className="p-6 font-serif font-bold text-sm uppercase tracking-wider flex items-center gap-2"><Wifi size={16}/> Visibilidade Online</th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-slate-700 divide-y divide-gray-100">
-                                <tr className="hover:bg-blue-50 transition-colors">
-                                    <td className="p-6 font-bold flex items-center gap-2 text-[#0f172a]"><Star size={18} className="text-blue-500" fill="currentColor"/> Diamante</td>
-                                    <td className="p-6 font-bold text-[#0f172a]">R$ 5.000</td>
-                                    <td className="p-6">160 un.</td>
-                                    <td className="p-6 font-medium text-sm">Capa de Trás<br/><span className="text-xs text-slate-500 font-normal">(Contracapa Exclusiva)</span></td>
-                                    <td className="p-6 text-sm">Destaque Solo em Vídeo + Banner Rotativo App</td>
-                                </tr>
-                                <tr className="hover:bg-amber-50 transition-colors">
-                                    <td className="p-6 font-bold flex items-center gap-2 text-[#0f172a]"><Star size={18} className="text-yellow-500" fill="currentColor"/> Ouro</td>
-                                    <td className="p-6 font-bold text-[#0f172a]">R$ 2.500</td>
-                                    <td className="p-6">80 un.</td>
-                                    <td className="p-6 font-medium text-sm">Verso da Capa da Frente e<br/>Verso da Capa de Trás</td>
-                                    <td className="p-6 text-sm">Logo nos Créditos dos Vídeos + Banner App</td>
-                                </tr>
-                                <tr className="hover:bg-gray-50 transition-colors">
-                                    <td className="p-6 font-bold flex items-center gap-2 text-[#0f172a]"><Star size={18} className="text-gray-400" fill="currentColor"/> Prata</td>
-                                    <td className="p-6 font-bold text-[#0f172a]">R$ 1.000</td>
-                                    <td className="p-6">40 un.</td>
-                                    <td className="p-6 font-medium text-sm">Anúncio (Arte Completa)<br/><span className="text-xs text-slate-500 font-normal">11cm x 5cm (Jan, Abr, Ago)</span></td>
-                                    <td className="p-6 text-sm">Link na Descrição (nos meses vigentes)</td>
-                                </tr>
-                                <tr className="hover:bg-orange-50 transition-colors">
-                                    <td className="p-6 font-bold flex items-center gap-2 text-[#0f172a]"><Star size={18} className="text-orange-600" fill="currentColor"/> Bronze</td>
-                                    <td className="p-6 font-bold text-[#0f172a]">R$ 300</td>
-                                    <td className="p-6">10 un.</td>
-                                    <td className="p-6 font-medium text-sm">Lista de Apoio</td>
-                                    <td className="p-6 text-sm">Nome na Lista do Site/App</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section>
-        );
-
-        const ContactSection = () => (
-            <section className="py-24 px-4 bg-white" id="contato">
-                <div className="container mx-auto max-w-5xl text-center">
-                    <span className="text-[#fbbf24] font-bold tracking-widest text-xs uppercase mb-4 block">Fale Conosco</span>
-                    <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#0f172a] mb-6">Garanta seu espaço</h2>
-                    <p className="text-xl text-slate-600 mb-16 max-w-2xl mx-auto font-light">As vagas são limitadas, especialmente para os planos Diamante e Ouro. Escolha seu consultor abaixo e inicie a conversa.</p>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {CONTACTS.map((contact, idx) => (
-                            <motion.div 
-                                key={idx} 
-                                className="flex flex-col gap-4 group"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                            >
-                                <div className="bg-white p-8 rounded-2xl border border-slate-100 shadow-lg hover:shadow-2xl transition-all duration-300 flex-grow flex flex-col items-center justify-center relative overflow-hidden group-hover:-translate-y-2">
-                                    <div className="absolute top-0 w-full h-1 bg-gradient-to-r from-[#0f172a] via-[#fbbf24] to-[#0f172a] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    
-                                    <div className="w-28 h-28 bg-slate-50 text-[#0f172a] rounded-full flex items-center justify-center mb-6 border-4 border-slate-100 group-hover:border-[#fbbf24] transition-colors overflow-hidden relative shadow-lg">
-                                        <img 
-                                            src={contact.image} 
-                                            alt={contact.name} 
-                                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                                            onError={(e) => {
-                                                // Se a imagem local falhar, usa o fallback do objeto CONTACTS
-                                                e.target.src = contact.fallback;
-                                            }}
-                                        />
-                                    </div>
-
-                                    <h3 className="font-serif font-bold text-xl text-[#0f172a] mb-1">{contact.name}</h3>
-                                    <p className="text-[#fbbf24] text-xs font-bold uppercase tracking-wider mb-6">Consultor Comercial</p>
-                                    
-                                    <div className="w-full mt-auto">
-                                         <p className="font-mono text-slate-500 mb-4 text-sm flex items-center justify-center gap-2">
-                                            <Phone size={14} /> {contact.display}
-                                        </p>
-                                        <WhatsAppButton contact={contact} className="w-full transform group-hover:scale-105 transition-transform" />
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        );
-
-        const Footer = () => (
-            <footer className="bg-[#0f172a] text-white/60 py-12 text-center border-t border-white/10">
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-col items-center justify-center mb-8">
-                        {/* Container para a Logo */}
-                        <div className="relative h-24 w-auto mb-4 flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity">
+                        <div class="relative bg-white/40 p-3 sm:p-4 rounded-2xl border border-white/60 shadow-2xl backdrop-blur-sm group">
                             <img 
-                                src="logo-ibm.png" 
-                                alt="Igreja Batista Memorial de Macaé" 
-                                className="h-full w-auto object-contain brightness-0 invert"
-                                onError={(e) => {
-                                    e.target.style.display = 'none';
-                                    const fallback = document.getElementById('fallback-text');
-                                    if(fallback) fallback.style.display = 'block';
-                                }}
+                                src="livro-mockup-novo.png" 
+                                alt="Mockup Oficial do Livro Palavra do Dia - Dimensões 10,5 x 15,5 cm"
+                                class="w-full h-auto rounded-xl shadow-lg transform transition-transform duration-700 group-hover:scale-[1.01]"
                             />
-                            {/* Fallback de Texto */}
-                            <div id="fallback-text" style={{display: 'none'}} className="font-serif font-bold text-2xl text-white tracking-widest uppercase">
-                                IBM Macaé
+                            
+                            <div class="mt-3 px-2 flex items-center justify-between text-xs text-navy-800/80">
+                                <span class="font-medium flex items-center gap-1.5">
+                                    <svg class="w-4 h-4 text-bronze-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+                                    Design Editorial Oficial
+                                </span>
+                                <span class="font-mono text-[11px] text-navy-700/60 font-semibold">Reflexões Diárias</span>
                             </div>
                         </div>
                     </div>
-                    <p className="text-sm leading-loose">
-                        &copy; 2026 <strong>Palavra do Dia</strong>. Todos os direitos reservados. <br/>
-                        Um projeto da <span className="text-white">Igreja Batista Memorial de Macaé</span>.
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUE O LIVRO FÍSICO SUPERA O DIGITAL (SEM JARGÕES) -->
+    <section id="proposito" class="py-16 px-4 bg-white border-y border-sand-300/60">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-2xl mx-auto text-center mb-14">
+                <span class="text-xs uppercase tracking-widest text-bronze-600 font-bold block mb-2">Visibilidade Tangível & Perpétua</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-navy-950 font-bold mb-4">Por que a mídia impressa neste livro tem tanto valor?</h2>
+                <p class="text-navy-800/70 font-light leading-relaxed">
+                    Em um mundo saturado de anúncios digitais efêmeros que somem em segundos, o impresso nobre ocupa o espaço mais valioso: a rotina física da família.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- CARD 1 -->
+                <div class="p-8 rounded-2xl bg-sand-100/70 border border-sand-300 hover:border-bronze-500/50 transition-all hover:shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-sand-100 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy-950 mb-3">Permanência de 365 Dias</h3>
+                    <p class="text-navy-800/80 text-sm leading-relaxed font-light">
+                        Um post em rede social dura 24 horas e é ignorado. O livro físico fica exposto sobre a mesa de centro, na recepção do escritório ou na cabeceira, sendo folheado diariamente durante o ano inteiro.
                     </p>
                 </div>
-            </footer>
-        );
 
-        const App = () => {
-            return (
-                <div className="min-h-screen font-sans bg-[#fffaf5] text-[#0f172a]">
-                    <Hero />
-                    <Intro />
-                    <EcosystemSection />
-                    <FeaturedMessage />
-                    <PastorVoiceSection />
+                <!-- CARD 2 -->
+                <div class="p-8 rounded-2xl bg-sand-100/70 border border-sand-300 hover:border-bronze-500/50 transition-all hover:shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-sand-100 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy-950 mb-3">Prestígio & Intimidade</h3>
+                    <p class="text-navy-800/80 text-sm leading-relaxed font-light">
+                        O leitor abre o devocional no momento mais sereno do seu dia: pela manhã ou antes de dormir. Sua marca é recebida com acolhimento, credibilidade e respeito mútuo.
+                    </p>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="p-8 rounded-2xl bg-sand-100/70 border border-sand-300 hover:border-bronze-500/50 transition-all hover:shadow-lg">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-sand-100 flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                    </div>
+                    <h3 class="font-serif font-bold text-xl text-navy-950 mb-3">Apenas 16 Parceiros</h3>
+                    <p class="text-navy-800/80 text-sm leading-relaxed font-light">
+                        Não haverá centenas de marcas amontoadas. Limitamos rigidamente o livro a apenas 16 patrocinadores institucionais. Sua empresa terá protagonismo visual absoluto e exclusivo.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO TÉCNICA: GABARITO & AMOSTRA DAS PROPAGANDAS -->
+    <section id="gabarito" class="py-20 px-4 bg-sand-200/50">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="max-w-2xl mx-auto text-center mb-12">
+                <span class="text-xs uppercase tracking-widest text-bronze-600 font-bold block mb-2">Engenharia Gráfica & Diagramação</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-navy-950 font-bold mb-4">Onde sua marca ficará no livro?</h2>
+                <p class="text-navy-800/70 font-light leading-relaxed">
+                    Todas as páginas foram dimensionadas no formato exato <strong>10,5 x 15,5 cm</strong>. Selecione abaixo a posição desejada para visualizar o gabarito técnico e o nível de exposição:
+                </p>
+            </div>
+
+            <!-- CONTROLE DE ABAS INTERATIVAS -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10 max-w-4xl mx-auto">
+                <button onclick="selectSlot('contracapa')" id="btn-contracapa" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-navy-900 text-sand-100 shadow-md">
+                    1. Contracapa Master (Capa 4)
+                </button>
+                <button onclick="selectSlot('honra')" id="btn-honra" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100">
+                    2. Página de Honra (1ª Página)
+                </button>
+                <button onclick="selectSlot('capa2')" id="btn-capa2" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100">
+                    3. Segunda Capa (Verso Frente)
+                </button>
+                <button onclick="selectSlot('capa3')" id="btn-capa3" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100">
+                    4. Terceira Capa (Verso Trás)
+                </button>
+                <button onclick="selectSlot('meses')" id="btn-meses" class="slot-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-white text-navy-900 border border-sand-400 hover:bg-sand-100">
+                    5. Aberturas de Mês (12 Cotas)
+                </button>
+            </div>
+
+            <!-- VISUALIZADOR TÉCNICO DO LIVRO -->
+            <div class="bg-white rounded-3xl p-6 sm:p-10 border border-sand-300 shadow-xl max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                     
-                    <div className="container mx-auto px-4 max-w-6xl py-12" id="planos">
-                        <div className="text-center mb-16">
-                            <span className="text-[#fbbf24] font-bold tracking-widest text-xs uppercase mb-3 block">Nossos Planos</span>
-                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#0f172a]">Opções de Patrocínio</h2>
+                    <!-- PLANTA DA PÁGINA (SIMULADOR 10,5 X 15,5 CM) -->
+                    <div class="md:col-span-5 flex justify-center">
+                        <div class="relative w-56 aspect-[10.5/15.5] bg-sand-50 rounded-md border-2 border-navy-900/30 p-3 shadow-2xl flex flex-col justify-between">
+                            
+                            <!-- MARCAÇÃO DE COTAÇÃO TÉCNICA -->
+                            <div class="absolute -top-6 left-0 right-0 flex justify-between text-[11px] font-mono text-navy-700/60 font-semibold px-1">
+                                <span>|◄</span>
+                                <span>Largura: 10,5 cm</span>
+                                <span>►|</span>
+                            </div>
+                            <div class="absolute -right-8 top-0 bottom-0 flex flex-col justify-between text-[11px] font-mono text-navy-700/60 font-semibold py-1 [writing-mode:vertical-lr]">
+                                <span>|◄ Altura: 15,5 cm ►|</span>
+                            </div>
+
+                            <!-- ÁREA DE SANGRIA E SEGURANÇA -->
+                            <div id="blueprint-area" class="w-full h-full border-2 border-dashed border-bronze-500/80 bg-bronze-500/5 rounded p-3 flex flex-col justify-between items-center text-center transition-all">
+                                <div class="w-full border-b border-navy-900/10 pb-2">
+                                    <span id="blueprint-tag" class="text-[9px] uppercase tracking-widest font-bold px-2 py-0.5 rounded bg-navy-900 text-sand-100">
+                                        Capa 4 Externa
+                                    </span>
+                                </div>
+
+                                <div class="my-auto py-2">
+                                    <div class="w-12 h-12 mx-auto rounded-full bg-navy-900/10 border border-navy-900/20 flex items-center justify-center mb-2">
+                                        <svg class="w-6 h-6 text-navy-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    </div>
+                                    <h4 id="blueprint-title" class="font-serif font-bold text-navy-950 text-sm leading-tight">
+                                        Espaço da Sua Marca
+                                    </h4>
+                                    <p id="blueprint-desc" class="text-[10px] text-navy-800/70 mt-1 font-mono">
+                                        Página Inteira: 105 x 155 mm
+                                    </p>
+                                </div>
+
+                                <div class="w-full border-t border-navy-900/10 pt-1.5 flex justify-between items-center text-[9px] text-navy-700/60 font-mono">
+                                    <span>Margem Segura: 10mm</span>
+                                    <span>3mm Sangria</span>
+                                </div>
+                            </div>
+
                         </div>
-                        {PLANS.map((plan, index) => (
-                            <PlanSection 
-                                key={plan.id} 
-                                plan={plan} 
-                                align={index % 2 !== 0 ? 'right' : 'left'} 
-                            />
-                        ))}
                     </div>
 
-                    {/* Vídeo movido para depois dos planos conforme solicitado */}
-                    <PlanVideoSection />
-                    
-                    <ComparisonTable />
-                    <ContactSection />
-                    <Footer />
+                    <!-- DETALHES TÉCNICOS E VALOR -->
+                    <div class="md:col-span-7">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span id="slot-badge" class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-bronze-500/20 text-bronze-700">
+                                1 Vaga Exclusiva
+                            </span>
+                            <span class="text-xs text-navy-700/60 font-medium">Acabamento Nobre</span>
+                        </div>
+
+                        <h3 id="slot-name" class="font-serif text-2xl sm:text-3xl font-bold text-navy-950 mb-2">
+                            Contracapa Master (Capa 4 Externa)
+                        </h3>
+
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span id="slot-price" class="text-3xl sm:text-4xl font-serif font-bold text-navy-950">R$ 10.000</span>
+                            <span class="text-xs text-navy-700/60 font-medium">Investimento Único</span>
+                        </div>
+
+                        <p id="slot-explanation" class="text-navy-800/80 text-sm leading-relaxed mb-6 font-light">
+                            A posição de maior visibilidade externa do livro. Sua marca fica exposta na contracapa traseira, visível imediatamente sempre que o devocional estiver pousado em qualquer mesa, balcão ou estante, sem que o leitor precise abrir a obra.
+                        </p>
+
+                        <div class="bg-sand-100 rounded-xl p-4 border border-sand-300 mb-6 space-y-2 text-xs text-navy-900">
+                            <div class="flex items-center justify-between">
+                                <span class="text-navy-700/70 font-medium">Dimensão de Impressão:</span>
+                                <strong class="font-mono">10,5 cm x 15,5 cm (Página Inteira)</strong>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-navy-700/70 font-medium">Acabamento Gráfico:</span>
+                                <strong>Papel de alta gramatura com laminação fosca</strong>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-navy-700/70 font-medium">Disponibilidade:</span>
+                                <strong id="slot-status" class="text-emerald-700">Disponível para Reserva</strong>
+                            </div>
+                        </div>
+
+                        <a id="slot-cta" href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Contracapa%20Master%20(R$%2010.000)%20no%20Palavra%20do%20Dia." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-xl bg-navy-900 text-sand-50 font-semibold text-xs uppercase tracking-wider hover:bg-navy-800 shadow-md transition-all">
+                            <span>Solicitar Reserva Deste Espaço</span>
+                            <svg class="w-4 h-4 text-bronze-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                        </a>
+                    </div>
+
                 </div>
-            );
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO: TABELA OFICIAL DE INVESTIMENTOS -->
+    <section id="cotas" class="py-20 px-4 bg-white border-t border-sand-300/60">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="max-w-2xl mx-auto text-center mb-16">
+                <span class="text-xs uppercase tracking-widest text-bronze-600 font-bold block mb-2">Tabela Oficial 2026/2027</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-navy-950 font-bold mb-4">Escolha a cota ideal para sua empresa</h2>
+                <p class="text-navy-800/70 font-light leading-relaxed">
+                    Valores justos e calibrados para garantir o custeio da tiragem e posicionar sua empresa entre as 16 marcas de maior prestígio do projeto.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- CARD 1: CONTRACAPA MASTER -->
+                <div class="rounded-2xl p-6 bg-sand-100/60 border-2 border-navy-900 flex flex-col justify-between relative shadow-xl">
+                    <div class="absolute -top-3 right-6 bg-navy-900 text-sand-100 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">
+                        Posição #1 Mais Nobre
+                    </div>
+                    <div>
+                        <span class="text-xs text-navy-700/60 font-semibold uppercase tracking-wider block mb-1">Capa 4 Externa</span>
+                        <h3 class="font-serif text-2xl font-bold text-navy-950 mb-2">Contracapa Master</h3>
+                        <p class="text-xs text-navy-800/80 mb-4 font-light leading-relaxed">
+                            Atrás do livro. Visibilidade máxima e imediata mesmo quando o livro estiver fechado sobre mesas de reunião ou cabeceira.
+                        </p>
+                        <div class="mb-6">
+                            <span class="text-3xl font-serif font-bold text-navy-950">R$ 10.000</span>
+                            <span class="text-xs text-navy-700/60 block mt-0.5">Cota Única e Exclusiva</span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-navy-800 mb-6 border-t border-sand-300 pt-4">
+                            <li class="flex items-center gap-2">✓ <strong>Página Inteira:</strong> 10,5 x 15,5 cm</li>
+                            <li class="flex items-center gap-2">✓ Acabamento com laminação especial</li>
+                            <li class="flex items-center gap-2">✓ Livros bônus para clientes e colaboradores</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20reservar%20a%20Contracapa%20Master%20(R$%2010.000)." target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-sand-100 font-semibold text-xs uppercase tracking-wider text-center transition-all shadow-sm">
+                        Reservar Contracapa
+                    </a>
+                </div>
+
+                <!-- CARD 2: PÁGINA DE HONRA -->
+                <div class="rounded-2xl p-6 bg-sand-100/60 border border-sand-400 flex flex-col justify-between relative hover:shadow-lg transition-all">
+                    <div class="absolute -top-3 right-6 bg-bronze-600 text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">
+                        Primeira Página
+                    </div>
+                    <div>
+                        <span class="text-xs text-navy-700/60 font-semibold uppercase tracking-wider block mb-1">Folha Nobre Inicial</span>
+                        <h3 class="font-serif text-2xl font-bold text-navy-950 mb-2">Página de Honra</h3>
+                        <p class="text-xs text-navy-800/80 mb-4 font-light leading-relaxed">
+                            A primeira página que o leitor encontra logo após abrir a capa. Perfeita para mensagem institucional de grande relevância.
+                        </p>
+                        <div class="mb-6">
+                            <span class="text-3xl font-serif font-bold text-navy-950">R$ 8.000</span>
+                            <span class="text-xs text-navy-700/60 block mt-0.5">Cota Única e Exclusiva</span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-navy-800 mb-6 border-t border-sand-300 pt-4">
+                            <li class="flex items-center gap-2">✓ <strong>Página Inteira:</strong> 10,5 x 15,5 cm</li>
+                            <li class="flex items-center gap-2">✓ Destaque institucional de abertura</li>
+                            <li class="flex items-center gap-2">✓ Livros bônus inclusos</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20reservar%20a%20Página%20de%20Honra%20(R$%208.000)." target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-sand-100 font-semibold text-xs uppercase tracking-wider text-center transition-all shadow-sm">
+                        Reservar Página de Honra
+                    </a>
+                </div>
+
+                <!-- CARD 3: SEGUNDA CAPA INTERNA -->
+                <div class="rounded-2xl p-6 bg-sand-100/60 border border-sand-400 flex flex-col justify-between hover:shadow-lg transition-all">
+                    <div>
+                        <span class="text-xs text-navy-700/60 font-semibold uppercase tracking-wider block mb-1">Verso da Capa Frontal</span>
+                        <h3 class="font-serif text-2xl font-bold text-navy-950 mb-2">2ª Capa Interna</h3>
+                        <p class="text-xs text-navy-800/80 mb-4 font-light leading-relaxed">
+                            A face interna da capa da frente. Alto impacto visual ao abrir o livro para as primeiras reflexões.
+                        </p>
+                        <div class="mb-6">
+                            <span class="text-3xl font-serif font-bold text-navy-950">R$ 5.000</span>
+                            <span class="text-xs text-navy-700/60 block mt-0.5">Cota Única e Exclusiva</span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-navy-800 mb-6 border-t border-sand-300 pt-4">
+                            <li class="flex items-center gap-2">✓ <strong>Página Inteira:</strong> 10,5 x 15,5 cm</li>
+                            <li class="flex items-center gap-2">✓ Posição nobre clássica editorial</li>
+                            <li class="flex items-center gap-2">✓ Livros bônus inclusos</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20reservar%20a%202ª%20Capa%20Interna%20(R$%205.000)." target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-sand-100 font-semibold text-xs uppercase tracking-wider text-center transition-all shadow-sm">
+                        Reservar 2ª Capa
+                    </a>
+                </div>
+
+                <!-- CARD 4: TERCEIRA CAPA INTERNA -->
+                <div class="rounded-2xl p-6 bg-sand-100/60 border border-sand-400 flex flex-col justify-between hover:shadow-lg transition-all">
+                    <div>
+                        <span class="text-xs text-navy-700/60 font-semibold uppercase tracking-wider block mb-1">Verso da Contracapa</span>
+                        <h3 class="font-serif text-2xl font-bold text-navy-950 mb-2">3ª Capa Interna</h3>
+                        <p class="text-xs text-navy-800/80 mb-4 font-light leading-relaxed">
+                            A face interna da contracapa traseira. Visualizada em todo fechamento do livro com máxima elegância.
+                        </p>
+                        <div class="mb-6">
+                            <span class="text-3xl font-serif font-bold text-navy-950">R$ 5.000</span>
+                            <span class="text-xs text-navy-700/60 block mt-0.5">Cota Única e Exclusiva</span>
+                        </div>
+                        <ul class="space-y-2 text-xs text-navy-800 mb-6 border-t border-sand-300 pt-4">
+                            <li class="flex items-center gap-2">✓ <strong>Página Inteira:</strong> 10,5 x 15,5 cm</li>
+                            <li class="flex items-center gap-2">✓ Página de conclusão nobre</li>
+                            <li class="flex items-center gap-2">✓ Livros bônus inclusos</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20reservar%20a%203ª%20Capa%20Interna%20(R$%205.000)." target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-sand-100 font-semibold text-xs uppercase tracking-wider text-center transition-all shadow-sm">
+                        Reservar 3ª Capa
+                    </a>
+                </div>
+
+                <!-- CARD 5: ABERTURAS DE MÊS (12 MESES) -->
+                <div class="rounded-2xl p-6 bg-sand-100/60 border border-sand-400 flex flex-col justify-between md:col-span-2 lg:col-span-2 hover:shadow-lg transition-all">
+                    <div>
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-xs text-navy-700/60 font-semibold uppercase tracking-wider">Folha de Transição de Mês</span>
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                                12 Vagas (1 por Mês)
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-navy-950 mb-2">Aberturas Mensais (Janeiro a Dezembro)</h3>
+                        <p class="text-xs text-navy-800/80 mb-4 font-light leading-relaxed max-w-xl">
+                            Seja o patrocinador oficial do mês temático mais estratégico para o seu negócio (ex: Mês das Mães em Maio, Dia dos Pais em Agosto, Saúde da Mulher em Outubro, etc.).
+                        </p>
+                        
+                        <div class="flex items-baseline gap-2 mb-6">
+                            <span class="text-3xl font-serif font-bold text-navy-950">R$ 1.000</span>
+                            <span class="text-xs text-navy-700/60">por mês / cota única</span>
+                        </div>
+
+                        <!-- SELETOR DE MESES ILUSTRATIVO -->
+                        <div class="grid grid-cols-4 sm:grid-cols-6 gap-2 mb-6 text-center text-xs">
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Jan</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Fev</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Mar</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Abr</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Mai</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Jun</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Jul</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Ago</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Set</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Out</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Nov</span>
+                            <span class="p-2 rounded bg-white border border-sand-300 font-medium hover:border-navy-900 cursor-pointer">Dez</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5522998586180?text=Olá,%20gostaria%20de%20consultar%20a%20disponibilidade%20de%20meses%20no%20Palavra%20do%20Dia%20(R$%201.000)." target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-navy-900 hover:bg-navy-800 text-sand-100 font-semibold text-xs uppercase tracking-wider text-center transition-all shadow-sm">
+                        Consultar Disponibilidade de Mês
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE O AUTOR E A MISSÃO -->
+    <section class="py-16 px-4 bg-sand-100 border-t border-sand-300">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-xs uppercase tracking-widest text-bronze-600 font-bold block mb-2">Liderança Pastoral</span>
+            <h2 class="font-serif text-3xl font-bold text-navy-950 mb-6">Uma Palavra de Fé & Esperança</h2>
+            
+            <blockquote class="font-serif italic text-lg sm:text-xl text-navy-900/90 leading-relaxed mb-6 max-w-2xl mx-auto">
+                "Deus não está apenas no alto, Ele está no meio da nossa rotina e do nosso dia a dia. E onde Ele está, sempre nasce um novo recomeço."
+            </blockquote>
+            
+            <span class="font-bold text-navy-950 block text-sm">Pr. Frederico Reis</span>
+            <span class="text-xs text-navy-700/60 uppercase tracking-widest font-semibold block mt-0.5">Igreja Batista Memorial de Macaé</span>
+        </div>
+    </section>
+
+    <!-- ÁREA DE CONTATO & CONSULTORES COMERCIAIS -->
+    <section id="consultores" class="py-20 px-4 bg-white border-t border-sand-300">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="max-w-2xl mx-auto text-center mb-14">
+                <span class="text-xs uppercase tracking-widest text-bronze-600 font-bold block mb-2">Atendimento Direto</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-navy-950 font-bold mb-4">Fale com nossos consultores</h2>
+                <p class="text-navy-800/70 font-light leading-relaxed">
+                    Tire suas dúvidas técnicas sobre o envio de arte ou garanta a reserva da cota da sua empresa diretamente pelo WhatsApp.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                
+                <!-- CONSULTOR 1: THIAGO VITALINO -->
+                <div class="bg-sand-50 rounded-2xl p-6 border border-sand-300 text-center flex flex-col items-center hover:shadow-xl transition-all">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-bronze-500 shadow-md">
+                        <img src="thiago.png" alt="Thiago Vitalino" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=200&h=200'">
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-navy-950 mb-1">Thiago Vitalino</h3>
+                    <span class="text-xs text-navy-700/60 uppercase tracking-wider font-semibold mb-4">Coordenação Comercial</span>
+                    <a href="https://wa.me/5522998586180?text=Olá%20Thiago,%20gostaria%20de%20saber%20mais%20sobre%20as%20cotas%20do%20livro%20Palavra%20do%20Dia." target="_blank" rel="noopener noreferrer" class="mt-auto w-full py-2.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                        (22) 99858-6180
+                    </a>
+                </div>
+
+                <!-- CONSULTOR 2: DENIS PESSANHA -->
+                <div class="bg-sand-50 rounded-2xl p-6 border border-sand-300 text-center flex flex-col items-center hover:shadow-xl transition-all">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-bronze-500 shadow-md">
+                        <img src="denis.png" alt="Denis Pessanha" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?fit=crop&w=200&h=200'">
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-navy-950 mb-1">Denis Pessanha</h3>
+                    <span class="text-xs text-navy-700/60 uppercase tracking-wider font-semibold mb-4">Consultor de Parcerias</span>
+                    <a href="https://wa.me/5522999131266?text=Olá%20Denis,%20gostaria%20de%20saber%20mais%20sobre%20as%20cotas%20do%20livro%20Palavra%20do%20Dia." target="_blank" rel="noopener noreferrer" class="mt-auto w-full py-2.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                        (22) 99913-1266
+                    </a>
+                </div>
+
+                <!-- CONSULTOR 3: BRUNO ASSIS -->
+                <div class="bg-sand-50 rounded-2xl p-6 border border-sand-300 text-center flex flex-col items-center hover:shadow-xl transition-all">
+                    <div class="w-24 h-24 rounded-full overflow-hidden mb-4 border-2 border-bronze-500 shadow-md">
+                        <img src="bruno.png" alt="Bruno Assis" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=200&h=200'">
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-navy-950 mb-1">Bruno Assis</h3>
+                    <span class="text-xs text-navy-700/60 uppercase tracking-wider font-semibold mb-4">Consultor de Parcerias</span>
+                    <a href="https://wa.me/5521988761524?text=Olá%20Bruno,%20gostaria%20de%20saber%20mais%20sobre%20as%20cotas%20do%20livro%20Palavra%20do%20Dia." target="_blank" rel="noopener noreferrer" class="mt-auto w-full py-2.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                        (21) 98876-1524
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ INSTITUCIONAL -->
+    <footer class="bg-navy-950 text-sand-300 py-12 px-4 border-t border-navy-900">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+                <span class="font-serif font-bold text-lg text-white block">Palavra do Dia</span>
+                <span class="text-xs text-sand-400 block mt-1">
+                    Um projeto pastoral da <strong>Igreja Batista Memorial de Macaé</strong><br/>
+                    Av. Agenor Caldas, 615 — Imbetiba, Macaé / RJ
+                </span>
+            </div>
+            
+            <div class="text-xs text-sand-400">
+                <span>Dimensões Técnicas Oficiais: 10,5 x 15,5 cm • 365 Páginas</span><br/>
+                <span class="text-[11px] text-sand-500 mt-1 block">© 2026/2027 Palavra do Dia. Todos os direitos reservados.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT: CONTROLE DO GABARITO INTERATIVO -->
+    <script>
+        const slotData = {
+            contracapa: {
+                tag: "Capa 4 Externa (Trás)",
+                title: "Contracapa Master",
+                desc: "Página Inteira: 105 x 155 mm",
+                badge: "1 Vaga Exclusiva",
+                name: "Contracapa Master (Capa 4 Externa)",
+                price: "R$ 10.000",
+                explanation: "A posição de maior visibilidade externa do livro. Sua marca fica exposta na contracapa traseira, visível imediatamente sempre que o devocional estiver pousado em qualquer mesa, balcão ou estante, sem que o leitor precise abrir a obra.",
+                status: "Disponível para Reserva",
+                ctaText: "Solicitar Reserva da Contracapa",
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Contracapa%20Master%20(R$%2010.000)%20no%20Palavra%20do%20Dia."
+            },
+            honra: {
+                tag: "1ª Página Interna",
+                title: "Página de Honra",
+                desc: "Página Inteira: 105 x 155 mm",
+                badge: "1 Vaga Exclusiva",
+                name: "Página de Honra (Abertura Inicial)",
+                price: "R$ 8.000",
+                explanation: "A primeira página interna que o leitor folheia logo após a capa. É a posição mais prestigiosa para apresentar a história, os valores ou uma mensagem institucional calorosa da sua empresa antes do início das leituras diárias.",
+                status: "Disponível para Reserva",
+                ctaText: "Solicitar Reserva da Página de Honra",
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Página%20de%20Honra%20(R$%208.000)%20no%20Palavra%20do%20Dia."
+            },
+            capa2: {
+                tag: "Verso da Capa Frontal",
+                title: "2ª Capa Interna",
+                desc: "Página Inteira: 105 x 155 mm",
+                badge: "1 Vaga Exclusiva",
+                name: "Segunda Capa Interna (Verso Frente)",
+                price: "R$ 5.000",
+                explanation: "A face interna da capa de abertura. Uma página nobre que salta aos olhos sempre que o leitor abre o livro para iniciar suas manhãs de reflexão.",
+                status: "Disponível para Reserva",
+                ctaText: "Solicitar Reserva da 2ª Capa",
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Segunda%20Capa%20Interna%20(R$%205.000)%20no%20Palavra%20do%20Dia."
+            },
+            capa3: {
+                tag: "Verso da Contracapa",
+                title: "3ª Capa Interna",
+                desc: "Página Inteira: 105 x 155 mm",
+                badge: "1 Vaga Exclusiva",
+                name: "Terceira Capa Interna (Verso Trás)",
+                price: "R$ 5.000",
+                explanation: "A face interna da contracapa traseira. Visualizada em todo fechamento do livro com máxima elegância e presença constante na rotina do leitor.",
+                status: "Disponível para Reserva",
+                ctaText: "Solicitar Reserva da 3ª Capa",
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20reserva%20da%20Terceira%20Capa%20Interna%20(R$%205.000)%20no%20Palavra%20do%20Dia."
+            },
+            meses: {
+                tag: "Virada Mensal (Jan a Dez)",
+                title: "Abertura de Mês",
+                desc: "Página Inteira: 105 x 155 mm",
+                badge: "12 Vagas (1 por Mês)",
+                name: "Abertura Mensal (Janeiro a Dezembro)",
+                price: "R$ 1.000",
+                explanation: "Página nobre de transição no início de cada mês do ano. Sua empresa se conecta com exclusividade ao mês temático que mais faz sentido para a sua estratégia (Mês das Mães, Aniversário da Marca, Dia dos Pais, etc.).",
+                status: "12 Meses em Aberto",
+                ctaText: "Consultar Disponibilidade do Mês",
+                whatsappMessage: "Olá,%20gostaria%20de%20consultar%20a%20disponibilidade%20de%20meses%20(R$%201.000)%20no%20Palavra%20do%20Dia."
+            }
         };
 
-        const root = createRoot(document.getElementById('root'));
-        root.render(<App />);
+        function selectSlot(slotKey) {
+            const data = slotData[slotKey];
+            if (!data) return;
+
+            // Atualiza botões
+            document.querySelectorAll('.slot-tab').forEach(btn => {
+                btn.classList.remove('bg-navy-900', 'text-sand-100', 'shadow-md');
+                btn.classList.add('bg-white', 'text-navy-900', 'border', 'border-sand-400');
+            });
+            const activeBtn = document.getElementById('btn-' + slotKey);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-navy-900', 'border', 'border-sand-400');
+                activeBtn.classList.add('bg-navy-900', 'text-sand-100', 'shadow-md');
+            }
+
+            // Atualiza o Blueprint da página
+            document.getElementById('blueprint-tag').textContent = data.tag;
+            document.getElementById('blueprint-title').textContent = data.title;
+            document.getElementById('blueprint-desc').textContent = data.desc;
+
+            // Atualiza os dados do painel lateral
+            document.getElementById('slot-badge').textContent = data.badge;
+            document.getElementById('slot-name').textContent = data.name;
+            document.getElementById('slot-price').textContent = data.price;
+            document.getElementById('slot-explanation').textContent = data.explanation;
+            document.getElementById('slot-status').textContent = data.status;
+            
+            const cta = document.getElementById('slot-cta');
+            cta.querySelector('span').textContent = data.ctaText;
+            cta.href = `https://wa.me/5522998586180?text=${data.whatsappMessage}`;
+        }
     </script>
 </body>
 </html>
